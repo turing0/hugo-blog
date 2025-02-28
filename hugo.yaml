@@ -19,7 +19,7 @@ languages:
         weight: 1
         params:
             sidebar:
-                subtitle: Example description
+                subtitle: 让一让，母牛们，生命短暂啊！
     zh-cn:
         languageName: 中文
         title: Laphel 博客
@@ -56,7 +56,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
+    favicon: /favicon.ico # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
         since: 2020
@@ -72,7 +72,7 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            src: img/avatar.jpg
 
     article:
         math: false
@@ -220,6 +220,12 @@ menu:
           url: https://github.com/CaiJimmy/hugo-theme-stack
           params:
               icon: brand-github
+
+        # - identifier: telegram
+        #   name: Telegram
+        #   url: https://t.me
+        #   params:
+        #       icon: brand-telegram
 
         - identifier: twitter
           name: Twitter
