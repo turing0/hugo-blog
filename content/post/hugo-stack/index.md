@@ -59,3 +59,8 @@ https://zhuanlan.zhihu.com/p/688275787
 
 https://tomo.dev/posts/create-hugo-theme-from-scratch/part-two/
 
+
+
+重定向旧链接
+
+https://qcrao.com/post/migrate-blog-to-cloudflare-pages/
