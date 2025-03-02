@@ -48,7 +48,7 @@ pagination:
     pagerSize: 3
 
 permalinks:
-    post: /p/:slug/
+    post: /posts/:slug/
     page: /:slug/
 
 params:
