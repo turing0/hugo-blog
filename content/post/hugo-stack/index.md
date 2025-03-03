@@ -66,5 +66,5 @@ https://yelleis.top/p/61fdb627/
 
 https://www.sleepymoon.cyou/2023/hugo-shortcodes/
 
-
+https://ghjayce.github.io/p/static-site-generator/hugo/hugo-theme-stack-gallery-study/
 
