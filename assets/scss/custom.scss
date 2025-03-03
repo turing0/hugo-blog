@@ -1,0 +1,52 @@
+// 文字颜色渐变
+.colorfulfont {
+    background: linear-gradient(to right, rgb(25, 221, 238), #ed4588); //第一个颜色代码是渐变起始色，第二个颜色代码是渐变结束色；
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+//重点标记
+mark{
+    background: hsla(199, 64%, 63%, 0.696);
+}
+
+//文本高斯模糊
+.blur {
+    color: transparent;
+    text-shadow:0px 0px 8px var(--card-text-color-main)
+}
+ 
+.blur:hover {
+    color: transparent;
+    text-shadow:0px 0px 0px var(--card-text-color-main)
+   
+}
+
+//文本黑幕效果
+.shady {
+    color:#000;
+    font-weight: bold;
+    box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+    transition: all 0.3s ease;
+}
+.shady:hover{
+   font-weight: bold;
+    color:#FFF;
+    box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+
+// 卡片样式
+.mycard {
+    padding: 20px 30px;
+    margin: 20px 0;
+    border-radius: 12px; /* 增加圆角 */
+    word-break: break-all;
+    background: linear-gradient(135deg, #e0f7fa, #c2e0f7); /* 线性渐变背景 */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* 稍微调整阴影 */
+    .content {
+      line-height: 32px;
+      color: #333; /* 调整文字颜色，使其在浅色背景上更清晰 */
+    }
+}
+

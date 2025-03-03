@@ -1,6 +1,5 @@
 ---
 title: QT Study
-abbrlink: qt-study
 date: 2021-01-07 20:13:09
 tags: [QT]
 categories: Code

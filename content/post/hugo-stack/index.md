@@ -67,3 +67,10 @@ https://zhuanlan.zhihu.com/p/688275787
 [Hugo Stack 魔改美化 | Naive Koala](https://www.xalaok.top/post/stack-modify/)
 
 [Hugo Stack主题更新小记](https://xrg.fj.cn/p/hugo-stack%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%B0%8F%E8%AE%B0/)
+
+https://yelleis.top/p/61fdb627/
+
+https://www.sleepymoon.cyou/2023/hugo-shortcodes/
+
+
+
