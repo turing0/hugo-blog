@@ -55,3 +55,42 @@ mark{
       color: #333; /* 调整文字颜色，使其在浅色背景上更清晰 */
     }
 }
+
+// macOS 风格代码块
+.article-content {
+  .highlight:before {
+    content: '';
+    display: block;
+    background: url(/code-header.svg);
+    height: 24px;
+    width: 100%;
+    background-size: 57px;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    background-position: -1px 2px;
+  }
+}
+
+// 固定代码块的高度
+.highlight {
+    background-color: var(--pre-background-color);
+    padding: var(--card-padding);
+    position: relative;
+
+    &:hover {
+        .copyCodeButton {
+            opacity: 1;
+        }
+    }
+    // keep Codeblocks LTR
+    [dir="rtl"] & {
+        direction: ltr;
+    }
+    pre {
+        margin: initial;
+        padding: 0;
+        margin: 0;
+        width: auto;
+        max-height: 20em;
+    }
+}

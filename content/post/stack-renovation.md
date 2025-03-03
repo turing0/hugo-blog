@@ -7,31 +7,47 @@ date: 2022-01-07 20:13:09
 
 
 
+```python
+
+@bot.command(aliases=['s'])
+async def stock(ctx, stock: str, days: int = 93):
+    channel_id = ctx.channel.id
+    if channel_id not 7494]:
+        await ctx.send(content=f"此频道不可使用此命令")
+        return
+    stock = stock.upper()
+    stock_list = stock.split(',')
+    for stock in stock_list:
+        try:
+            if len(stock) < 3 or stock[-3] != '.':
+                stock = stock+'.US'
+            today = datetime.today()
+            days_ago = toda
+            df = pd.DataFrame(candle_data)
+            df['Date'] = pd.to_datetime(df['timestamp'], unit='s')
+
+            # 按日期排序
+            df = df.sort_values('Date').reset_index(drop=True)
+            # 转换数值字段
+            numeric_fields = ['open', 'close', 'low', 'high', 'volume', 'turnover']
+            for field in numeric_fields:
+                df[field] = pd.to_numeric(df[field], errors='coerce')
+            df.set_index('Date', inplace=True)
+
+
+```
+
+
+
+
+
 <font class="colorfulfont"> 我挑的配色很好看吧！<br>好喜欢蓝色（再次）（再次）<br> 但总之换行的话就加个空标签。</font>
-
-
-
-
-
-
 
 {{< mark text="好喜欢蓝色！" >}}
 
-
-
-
-
 <span class="blur">一些手动打码效果！<br>但总之换行的话就加个空标签。</span>
 
-
-
 <span class="shady">数据删除！数据删除！<br>但总之换行的话就加个空标签。</span>
-
-
-
-
-
-
 
 {{< shake effect="shake" >}}这是基本的摇晃效果。{{< /shake >}}
 
@@ -57,8 +73,6 @@ date: 2022-01-07 20:13:09
 
 实际使用记得换双括号哦。
 
-
-
 {{< card >}}
 可以在这里插入链接假装是卡片式链接。
 <br>
@@ -67,13 +81,6 @@ date: 2022-01-07 20:13:09
 换行需要空标签。实际使用需要双括号。
 {{< /card >}}
 
-
-
 {{< underline color="#ffdd00" content="谁在用琵琶弹奏一曲东风破" >}}
 <br/>
 {{< underline color="#ff2200" content="岁月在墙上剥落看见小时候" >}}
-
-
-
-
-
