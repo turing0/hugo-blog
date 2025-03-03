@@ -1,6 +1,6 @@
 +++
 author = "Hugo Authors"
-title = "新网站: Hugo stack "
+title = "网站搬家: Hexo -> Hugo stack "
 date = "2025-02-28"
 description = "A brief description of Hugo Shortcodes"
 tags = [
