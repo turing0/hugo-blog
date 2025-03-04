@@ -4,28 +4,13 @@ slug: hugo-stack-renovation
 date: 2025-03-02 08:13:09
 ---
 
-
-
 装修下博客
 
 ---
 
 
 
-`{< animated_logo text="Custom Text" align="left"  >}`
-
-{{< animated_logo text="Custom Text" align="left"  >}}
-
-
-
-{{< animated_logo  >}}
-
-
-
----
-
 ```python
-
 @bot.command(aliases=['s'])
 async def stock(ctx, stock: str, days: int = 93):
     channel_id = ctx.channel.id
@@ -50,15 +35,27 @@ async def stock(ctx, stock: str, days: int = 93):
             for field in numeric_fields:
                 df[field] = pd.to_numeric(df[field], errors='coerce')
             df.set_index('Date', inplace=True)
-
-
 ```
 
+## 
 
-
-
+---
 
 ## Shortcoeds
+
+
+
+`{< animated_text text="Custom Text" >}`
+
+{{< animated_text text="my Custom Text"   >}}
+
+`{< animated_text text="Laphel" align="left" >}`
+
+{{< animated_text  align="left" >}}
+
+
+
+
 
 <font class="colorfulfont"> 我挑的配色很好看吧！<br>好喜欢蓝色（再次）（再次）<br> 但总之换行的话就加个空标签。</font>
 
@@ -103,10 +100,6 @@ async def stock(ctx, stock: str, days: int = 93):
 {{< underline color="#ffdd00" content="谁在用琵琶弹奏一曲东风破" >}}
 <br/>
 {{< underline color="#ff2200" content="岁月在墙上剥落看见小时候" >}}
-
-
-
-
 
 ## REF
 
