@@ -1,6 +1,7 @@
 +++
 author = "Hugo Authors"
 title = "网站搬家: Hexo -> Hugo stack "
+slug = "hexo-to-hugo-stack"
 date = "2025-02-28"
 description = "A brief description of Hugo Shortcodes"
 tags = [
@@ -67,5 +68,4 @@ https://www.sleepymoon.cyou/2023/hugo-shortcodes/
 https://ghjayce.github.io/p/static-site-generator/hugo/hugo-theme-stack-gallery-study/
 
 https://www.xalaok.top/post/stack-modify/
-
 
