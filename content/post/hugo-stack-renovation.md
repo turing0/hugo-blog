@@ -76,6 +76,70 @@ custom.scss 添加代码
 
 
 
+### 归档页面
+
+**分类列表优化，卡片缩放动画**
+
+改小了一点，原先的太大了
+
+custom.scss 添加代码
+
+```scss
+// 归档页面 分类列表优化
+.subsection-list {
+    .article-list--tile {
+        display: flex;
+        padding-bottom: 15px;
+
+        article {
+            width: 200px;
+            height: 120px;
+            margin-right: 10px;
+
+            .article-title {
+                margin: 0;
+                font-size: 1.8rem;
+            }
+      }
+    }
+}
+
+// 归档页面卡片缩放动画
+.article-list--tile article {
+  transition: .6s ease;
+}
+.article-list--tile article:hover {
+  transform: scale(1.03, 1.03);
+}
+
+
+```
+
+
+
+**归档页面两栏**
+
+```scss
+// 归档页面两栏
+@media (min-width: 1024px) {
+  .article-list--compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: none;
+    box-shadow: none;
+    gap: 1rem;
+
+    article {
+      background: var(--card-background);
+      border: none;
+      box-shadow: var(--shadow-l2);
+      margin-bottom: 8px;
+      border-radius: 16px;
+    }
+  }
+}
+```
+
 
 
 
