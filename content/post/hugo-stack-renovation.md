@@ -47,7 +47,7 @@ async def stock(ctx, stock: str, days: int = 93):
 
 `{< animated_text text="Custom Text" >}`
 
-{{< animated_text text="my Custom Text"   >}}
+{{< animated_text text="My Custom Text"   >}}
 
 `{< animated_text text="Laphel" align="left" >}`
 

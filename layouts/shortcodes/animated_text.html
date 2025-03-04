@@ -1,23 +1,38 @@
 {{ $text := .Get "text" | default "L a p h e l" }}
 {{ $align := .Get "align" | default "center" }}
+{{ $fontSize := .Get "font-size" | default "90" }}
 
-<div class="logo" style="text-align: {{ $align }};">
-  <svg xmlns="http://www.w3.org/2000/svg" font-size="50" class="name">
-    <text text-anchor="middle" x="50%" y="66%" text-transform="uppercase" fill="none" stroke="#5d3d21" stroke-width="1px" stroke-dasharray="90 310">
+<div class="logo" style="text-align: {{ $align }}; width: 100%; max-width: 100%;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="name" font-size="{{ $fontSize }}" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet">
+    {{ $textAnchor := "middle" }}
+    {{ $xPosition := "50%" }}
+    {{ if eq $align "left" }}
+      {{ $textAnchor = "start" }}
+      {{ $xPosition = "0%" }}
+    {{ else if eq $align "right" }}
+      {{ $textAnchor = "end" }}
+      {{ $xPosition = "100%" }}
+    {{ end }}
+
+    <text text-anchor="{{ $textAnchor }}" x="{{ $xPosition }}" y="66%" text-transform="uppercase" fill="none" stroke="#5d3d21" stroke-width="1px" stroke-dasharray="90 310">
       {{ $text }}
       <animate attributeName="stroke-dashoffset" begin="-1.5s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
     </text>
-    <text text-anchor="middle" x="50%" y="66%" text-transform="uppercase" fill="none" stroke="#212c27" stroke-width="1px" stroke-dasharray="90 310">
+
+    <text text-anchor="{{ $textAnchor }}" x="{{ $xPosition }}" y="66%" text-transform="uppercase" fill="none" stroke="#212c27" stroke-width="1px" stroke-dasharray="90 310">
       {{ $text }}
       <animate attributeName="stroke-dashoffset" begin="-3s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
     </text>
-    <text text-anchor="middle" x="50%" y="66%" text-transform="uppercase" fill="none" stroke="#ebb10d" stroke-width="1px" stroke-dasharray="90 310">
+
+    <text text-anchor="{{ $textAnchor }}" x="{{ $xPosition }}" y="66%" text-transform="uppercase" fill="none" stroke="#ebb10d" stroke-width="1px" stroke-dasharray="90 310">
       {{ $text }}
       <animate attributeName="stroke-dashoffset" begin="-4.5s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
     </text>
-    <text text-anchor="middle" x="50%" y="66%" text-transform="uppercase" fill="none" stroke="#9b59b6" stroke-width="1px" stroke-dasharray="90 310">
+
+    <text text-anchor="{{ $textAnchor }}" x="{{ $xPosition }}" y="66%" text-transform="uppercase" fill="none" stroke="#9b59b6" stroke-width="1px" stroke-dasharray="90 310">
       {{ $text }}
       <animate attributeName="stroke-dashoffset" begin="-6s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
     </text>
   </svg>
 </div>
+
