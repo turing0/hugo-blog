@@ -43,7 +43,7 @@ async def stock(ctx, stock: str, days: int = 93):
 
 ## Shortcoeds
 
-### 动态字体
+### animated_text 动态文字
 
 
 
@@ -65,27 +65,33 @@ async def stock(ctx, stock: str, days: int = 93):
 
 <span class="shady">数据删除！数据删除！<br>但总之换行的话就加个空标签。</span>
 
+
+
+`{< shake effect="shake" >}这是基本的摇晃效果。{< /shake >}`
+
 {{< shake effect="shake" >}}这是基本的摇晃效果。{{< /shake >}}
 
-{< shake effect="shake-hard" >}这个段落有剧烈摇晃效果。{< /shake >}
 
-{< shake effect="shake-slow" >}这个段落有慢速摇晃效果。{< /shake >}
 
-{< shake effect="shake-little" >}这个段落有轻微摇晃效果。{< /shake >}
+{{< shake effect="shake-hard" >}}这个段落有剧烈摇晃效果。{{< /shake >}}
 
-{< shake effect="shake-horizontal" >}这个段落有水平摇晃效果。{< /shake >}
+{{< shake effect="shake-slow" >}}这个段落有慢速摇晃效果。{{< /shake >}}
 
-{< shake effect="shake-vertical" >}这个段落有垂直摇晃效果。{< /shake >}
+{{< shake effect="shake-little" >}}这个段落有轻微摇晃效果。{{< /shake >}}
 
-{< shake effect="shake-rotate" >}这个段落有旋转摇晃效果。{< /shake >}
+{{< shake effect="shake-horizontal" >}}这个段落有水平摇晃效果。{{< /shake >}}
 
-{< shake effect="shake-opacity" >}这个段落有透明度变化摇晃效果。{< /shake >}
+{{< shake effect="shake-vertical" >}}这个段落有垂直摇晃效果。{{< /shake >}}
 
-{< shake effect="shake-crazy" >}这个段落有疯狂摇晃效果。{< /shake >}
+{{< shake effect="shake-rotate" >}}这个段落有旋转摇晃效果。{{< /shake >}}
 
-{< shake effect="shake-freeze" >}这个段落在悬停时冻结。{< /shake >}
+{{< shake effect="shake-opacity" >}}这个段落有透明度变化摇晃效果。{{< /shake >}}
 
-{< shake effect="shake-constant" >}这个段落持续摇晃。{< /shake >}
+{{< shake effect="shake-crazy" >}}这个段落有疯狂摇晃效果。{{< /shake >}}
+
+{{< shake effect="shake-freeze" >}}这个段落在悬停时冻结。{{< /shake >}}
+
+{{< shake effect="shake-constant" >}}这个段落持续摇晃。{{< /shake >}}
 
 实际使用记得换双括号哦。
 
