@@ -1,5 +1,6 @@
 ---
 title: 印度礼品卡订阅 YouTube Premium 教程
+slug: subscribe-youtube-premium-india-gift-card
 date: 2024-12-29 14:07:00
 tags:
 categories:
