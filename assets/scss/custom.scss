@@ -107,9 +107,22 @@ mark{
   }
 }
 
-// 站点头像居中
+// 站点头像，网站名字和描述居中
 .sidebar header {
   .site-avatar {
     margin: auto;
   }
+
+  .site-name {
+    margin: auto;
+  }
+
+  .site-description {
+    margin: auto;
+    font-size: 1.3rem;
+    @include respond(2xl) {
+      font-size: 1.6rem;
+    }
+  }
+
 }
