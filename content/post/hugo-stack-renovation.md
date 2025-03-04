@@ -1,5 +1,5 @@
 ---
-title: "Hugo stack 美化"
+title: "Hugo stack 主题美化"
 slug: hugo-stack-renovation
 date: 2025-03-02 08:13:09
 ---
@@ -85,3 +85,29 @@ async def stock(ctx, stock: str, days: int = 93):
 {{< underline color="#ffdd00" content="谁在用琵琶弹奏一曲东风破" >}}
 <br/>
 {{< underline color="#ff2200" content="岁月在墙上剥落看见小时候" >}}
+
+
+
+
+
+# REF
+
+https://www.blain.top/p/renovation/
+
+[个人网站的建立过程（三）：Hugo主题stack的使用与优化](https://jinli.io/p/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B%E4%B8%89hugo%E4%B8%BB%E9%A2%98stack%E7%9A%84%E4%BD%BF%E7%94%A8%E4%B8%8E%E4%BC%98%E5%8C%96/#%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%BC%98%E5%8C%96%E4%B8%BB%E9%A2%98)
+
+https://zhuanlan.zhihu.com/p/688275787
+
+[Hugo博客 | stack主题修改第一站](https://munlelee.github.io/post/hugo%E5%8D%9A%E5%AE%A2-stack%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E7%AC%AC%E4%B8%80%E7%AB%99/)
+
+[Hugo Stack 魔改美化 | Naive Koala](https://www.xalaok.top/post/stack-modify/)
+
+[Hugo Stack主题更新小记](https://xrg.fj.cn/p/hugo-stack%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%B0%8F%E8%AE%B0/)
+
+https://yelleis.top/p/61fdb627/
+
+https://www.sleepymoon.cyou/2023/hugo-shortcodes/
+
+https://ghjayce.github.io/p/static-site-generator/hugo/hugo-theme-stack-gallery-study/
+
+https://www.xalaok.top/post/stack-modify/
