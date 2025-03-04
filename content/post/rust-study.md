@@ -1,6 +1,5 @@
 ---
 title: Rust Study
-abbrlink: rust-study
 date: 2021-11-25 20:51:36
 tags: [Rust]
 categories: Code

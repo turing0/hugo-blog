@@ -1,6 +1,5 @@
 ---
 title: C++学习
-abbrlink: cpp-study
 date: 2020-05-21 17:08:00
 tags: [C++,Note]
 categories: Code

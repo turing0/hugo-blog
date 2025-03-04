@@ -4,7 +4,6 @@ tags:
   - C
 categories:
   - Code
-abbrlink: binarytree-traverse
 date: 2020-11-16 20:40:31
 ---
 

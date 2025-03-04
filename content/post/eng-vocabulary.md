@@ -1,6 +1,5 @@
 ---
 title: 学习 经验 知识
-abbrlink: vocabulary
 date: 2020-04-20 11:45:10
 tags:
 categories:

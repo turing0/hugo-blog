@@ -1,6 +1,5 @@
 ---
 title: Linux下C语言学习
-abbrlink: linux-c
 date: 2020-04-17 08:13:58
 tags: [C, Linux]
 categories: 

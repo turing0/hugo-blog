@@ -1,6 +1,5 @@
 ---
 title: Palpitate
-abbrlink: pppp
 date: 2020-05-06 17:00:00
 draft: true
 tags:

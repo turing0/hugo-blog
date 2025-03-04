@@ -1,6 +1,5 @@
 ---
 title: Vue Study
-abbrlink: vue-study
 date: 2021-01-25 10:12:36
 tags: [Vue]
 categories: Code

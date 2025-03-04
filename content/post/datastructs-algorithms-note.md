@@ -8,7 +8,7 @@ categories:
 
 笔记略长， 排版略丑
 
-serendipity
+
 
 # 数据结构与算法总览
 

@@ -4,7 +4,6 @@ tags:
   - codeblocks
 categories:
   - Code
-abbrlink: codeblocks-skills
 date: 2020-04-15 15:30:31
 ---
 

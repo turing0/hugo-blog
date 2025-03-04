@@ -1,7 +1,6 @@
 ---
 
 title: Git Study
-abbrlink: git-study
 date: 2021-03-01 14:35:08
 tags: [Git]
 categories: 
