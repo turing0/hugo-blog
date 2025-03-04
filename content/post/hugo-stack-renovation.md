@@ -8,8 +8,6 @@ date: 2025-03-02 08:13:09
 
 ---
 
-
-
 ```python
 @bot.command(aliases=['s'])
 async def stock(ctx, stock: str, days: int = 93):
@@ -43,9 +41,9 @@ async def stock(ctx, stock: str, days: int = 93):
 
 ## Shortcoeds
 
+以下代码块的内容实际使用请记得将大括号换成双大括号哦。
+
 ### animated_text 动态文字
-
-
 
 `{< animated_text text="L a p h e l"  >}`
 
@@ -55,23 +53,29 @@ async def stock(ctx, stock: str, days: int = 93):
 
 {{< animated_text text="哈哈" align="right"  >}}
 
-
-
 <font class="colorfulfont"> 我挑的配色很好看吧！<br>好喜欢蓝色（再次）（再次）<br> 但总之换行的话就加个空标签。</font>
 
+
+
+```
+{< mark text="好喜欢蓝色！" >}
+```
+
+
+
 {{< mark text="好喜欢蓝色！" >}}
+
+
+
+
 
 <span class="blur">一些手动打码效果！<br>但总之换行的话就加个空标签。</span>
 
 <span class="shady">数据删除！数据删除！<br>但总之换行的话就加个空标签。</span>
 
-
-
 `{< shake effect="shake" >}这是基本的摇晃效果。{< /shake >}`
 
 {{< shake effect="shake" >}}这是基本的摇晃效果。{{< /shake >}}
-
-
 
 {{< shake effect="shake-hard" >}}这个段落有剧烈摇晃效果。{{< /shake >}}
 
@@ -92,8 +96,6 @@ async def stock(ctx, stock: str, days: int = 93):
 {{< shake effect="shake-freeze" >}}这个段落在悬停时冻结。{{< /shake >}}
 
 {{< shake effect="shake-constant" >}}这个段落持续摇晃。{{< /shake >}}
-
-实际使用记得换双括号哦。
 
 {{< card >}}
 可以在这里插入链接假装是卡片式链接。
