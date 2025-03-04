@@ -35,7 +35,38 @@ async def stock(ctx, stock: str, days: int = 93):
             df.set_index('Date', inplace=True)
 ```
 
-## 
+
+
+
+
+## 网站
+
+以下的 `custom.scss` 均指  `博客根目录/assets/scss/custom.scss` 文件。
+
+
+
+### 左侧导航栏菜单间距
+
+custom.scss 添加代码，根据自己需求修改 gap
+
+```scss
+#main-menu {
+  &, .menu-bottom-section ol {
+      flex-direction: column;
+      gap: 20px;
+
+      @include respond(xl) {
+          gap: 20px;
+      }
+  }
+}
+```
+
+
+
+
+
+ 
 
 ---
 

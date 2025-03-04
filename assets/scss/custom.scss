@@ -94,3 +94,15 @@ mark{
         max-height: 20em;
     }
 }
+
+// 左侧导航栏菜单间距
+#main-menu {
+  &, .menu-bottom-section ol {
+      flex-direction: column;
+      gap: 20px;
+
+      @include respond(xl) {
+          gap: 20px;
+      }
+  }
+}
