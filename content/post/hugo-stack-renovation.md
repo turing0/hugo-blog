@@ -6,7 +6,23 @@ date: 2025-03-02 08:13:09
 
 
 
+装修下博客
 
+---
+
+
+
+`{< animated_logo text="Custom Text" align="left"  >}`
+
+{{< animated_logo text="Custom Text" align="left"  >}}
+
+
+
+{{< animated_logo  >}}
+
+
+
+---
 
 ```python
 
@@ -41,6 +57,8 @@ async def stock(ctx, stock: str, days: int = 93):
 
 
 
+
+## Shortcoeds
 
 <font class="colorfulfont"> 我挑的配色很好看吧！<br>好喜欢蓝色（再次）（再次）<br> 但总之换行的话就加个空标签。</font>
 
@@ -90,7 +108,7 @@ async def stock(ctx, stock: str, days: int = 93):
 
 
 
-# REF
+## REF
 
 https://www.blain.top/p/renovation/
 
