@@ -43,17 +43,19 @@ async def stock(ctx, stock: str, days: int = 93):
 
 ## Shortcoeds
 
+### 动态字体
 
-
-`{< animated_text text="Custom Text" >}`
+`{< animated_text text="My Custom Text" >}`
 
 {{< animated_text text="My Custom Text"   >}}
 
 `{< animated_text text="Laphel" align="left" >}`
 
-{{< animated_text  align="left" >}}
+{{< animated_text  text="Laphel" align="left" >}}
 
+`{< animated_text text="哈哈" align="right" >}`
 
+{{< animated_text text="哈哈" align="right" >}}
 
 
 
