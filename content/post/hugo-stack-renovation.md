@@ -43,18 +43,35 @@ async def stock(ctx, stock: str, days: int = 93):
 
 以下的 `custom.scss` 均指  `博客根目录/assets/scss/custom.scss` 文件。
 
-### 站点头像居中
+### 网站头像及名字居中
 
 custom.scss 添加代码
 
+顺便把描述的字体改小了一点
+
 ```scss
-// 站点头像居中
+// 站点头像，网站名字和描述居中
 .sidebar header {
   .site-avatar {
     margin: auto;
   }
-}
 
+  .site-name {
+    margin: auto;
+  }
+
+  .site-description {
+    margin: auto;
+    font-size: 1.3rem;
+    @include respond(2xl) {
+      font-size: 1.6rem;
+    }
+  }
+}
+// 社交图标居中
+.menu-social {
+  margin: auto;
+}
 ```
 
 

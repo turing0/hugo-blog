@@ -1,7 +1,7 @@
 baseurl: https://blog.laphel.com/
 languageCode: en-us
 theme: hugo-theme-stack
-title: Laphel Blog
+title: Laphel
 copyright: Laphel
 
 # Theme i18n support
@@ -15,14 +15,14 @@ hasCJKLanguage: false
 languages:
     en:
         languageName: English
-        title: Laphel Blog
+        title: Laphel
         weight: 1
         params:
             sidebar:
                 subtitle: 让一让，母牛们，生命短暂啊！
     zh-cn:
         languageName: 中文
-        title: Laphel 博客
+        title: Laphel
         weight: 2
         params:
             sidebar:
