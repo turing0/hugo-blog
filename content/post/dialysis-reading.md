@@ -1,5 +1,6 @@
 ---
 title: 恶魔奶爸的透析阅读法
+slug: dialysis-reading
 date: 2023-11-17 23:42:00
 tags: [English, Reading]
 categories: English

@@ -1,5 +1,6 @@
 ---
 title: Codeblocks 问题总结
+slug: codeblocks-skills
 tags:
   - codeblocks
 categories:

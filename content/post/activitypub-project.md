@@ -1,5 +1,6 @@
 ---
-title: ActivitypubProject
+title: Activitypub Project
+slug: activitypub-project
 date: 2023-02-03 22:36:18
 
 ---

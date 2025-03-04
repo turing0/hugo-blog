@@ -1,5 +1,6 @@
 ---
 title: Firefox和Chrome 自用扩展插件
+slug: firefox-chrome-extensions
 date: 2020-04-16 16:57:04
 tags: 
  - 插件

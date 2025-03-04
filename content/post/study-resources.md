@@ -1,5 +1,6 @@
 ---
 title: 学习资源
+slug: study-resources
 categories:
   - 资源
 date: 2020-03-05 09:12:40

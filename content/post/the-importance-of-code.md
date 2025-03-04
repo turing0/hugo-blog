@@ -1,5 +1,6 @@
 ---
 title: 写代码的重要性
+slug: the-importance-of-code
 tags:
   - 随笔
 date: 2020-03-02 14:53:06

@@ -1,5 +1,6 @@
 ---
 title: 电影 书单
+slug: movies-books
 categories:
   - 实用
 date: 2020-03-05 02:36:41

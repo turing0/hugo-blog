@@ -1,5 +1,6 @@
 ---
 title: Intellij IDEA 2020 创建 Jsp页面 及 示例
+slug: intellij-jsp
 date: 2021-03-14 15:12:36
 tags: [Java]
 categories: Code

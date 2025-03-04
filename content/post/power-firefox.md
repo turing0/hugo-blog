@@ -1,5 +1,6 @@
 ---
 title: 打造你的最强Firefox浏览器
+slug: power-firefox
 date: 2020-06-20 22:57:04
 tags: 
  - "插件"

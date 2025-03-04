@@ -1,5 +1,6 @@
 ---
 title: 为什么你该拥有一个GV号？
+slug: why-you-should-have-a-google-voice
 categories:
   - 实用
 date: 2020-03-04 04:07:44

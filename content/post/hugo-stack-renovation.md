@@ -1,6 +1,7 @@
 ---
 title: "Hugo stack 美化"
-date: 2022-01-07 20:13:09
+slug: hugo-stack-renovation
+date: 2025-03-02 08:13:09
 ---
 
 

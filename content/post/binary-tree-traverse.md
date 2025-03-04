@@ -1,5 +1,6 @@
 ---
 title: 二叉树的遍历
+slug: binary-tree-traverse
 tags:
   - C
 categories:

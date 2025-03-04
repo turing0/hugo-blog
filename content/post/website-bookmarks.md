@@ -1,5 +1,6 @@
 ---
 title: 网站收藏夹
+slug: website-bookmarks
 date: 2020-04-04 10:53:38
 tags: 
 categories: 实用

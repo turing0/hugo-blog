@@ -1,5 +1,6 @@
 ---
 title: Hexo Next优化之路
+slug: hexo-renovation
 tags:
   - Hexo
   - Next

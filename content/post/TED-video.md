@@ -1,5 +1,6 @@
 ---
 title: TED收藏夹 | 视频
+slug: TED-video
 tags:
   - TED
 categories:

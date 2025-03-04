@@ -1,5 +1,6 @@
 ---
 title: CTF基础 i春秋学习笔记
+slug: ctf-ichunqiu-note
 tags:
   - CTF
   - Note

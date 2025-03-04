@@ -1,5 +1,6 @@
 ---
-title: 学习 经验 知识
+title: 韦氏词典 攻略
+slug: merriam-webster-dictionary-guide
 date: 2020-04-20 11:45:10
 tags:
 categories:

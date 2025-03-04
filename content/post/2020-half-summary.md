@@ -1,5 +1,6 @@
 ---
 title: 2020上半年总结
+slug: 2020-half-summary
 date: 2020-07-06 22:00:58
 tags: 
 categories: 

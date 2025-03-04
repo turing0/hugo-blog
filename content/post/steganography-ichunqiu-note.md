@@ -1,5 +1,6 @@
 ---
 title: 隐写术及相关技术分析 i春秋学习笔记
+slug: steganography-ichunqiu-note
 tags:
   - CTF
   - Note

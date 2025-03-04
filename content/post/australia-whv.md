@@ -1,5 +1,6 @@
 ---
 title: 澳洲 WHV 申请教程
+slug: australia-whv
 date: 2024-01-01 23:20:01
 draft: true
 tags:
