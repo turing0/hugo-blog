@@ -106,3 +106,10 @@ mark{
       }
   }
 }
+
+// 站点头像居中
+.sidebar header {
+  .site-avatar {
+    margin: auto;
+  }
+}

@@ -6,6 +6,10 @@ date: 2025-03-02 08:13:09
 
 装修下博客
 
+
+
+
+
 ---
 
 ```python
@@ -35,13 +39,27 @@ async def stock(ctx, stock: str, days: int = 93):
             df.set_index('Date', inplace=True)
 ```
 
-
-
-
-
 ## 网站
 
 以下的 `custom.scss` 均指  `博客根目录/assets/scss/custom.scss` 文件。
+
+### 站点头像居中
+
+custom.scss 添加代码
+
+```scss
+// 站点头像居中
+.sidebar header {
+  .site-avatar {
+    margin: auto;
+  }
+}
+
+```
+
+
+
+
 
 
 
@@ -50,6 +68,7 @@ async def stock(ctx, stock: str, days: int = 93):
 custom.scss 添加代码，根据自己需求修改 gap
 
 ```scss
+// 左侧导航栏菜单间距
 #main-menu {
   &, .menu-bottom-section ol {
       flex-direction: column;
@@ -61,12 +80,6 @@ custom.scss 添加代码，根据自己需求修改 gap
   }
 }
 ```
-
-
-
-
-
- 
 
 ---
 
@@ -86,19 +99,11 @@ custom.scss 添加代码，根据自己需求修改 gap
 
 <font class="colorfulfont"> 我挑的配色很好看吧！<br>好喜欢蓝色（再次）（再次）<br> 但总之换行的话就加个空标签。</font>
 
-
-
 ```
 {< mark text="好喜欢蓝色！" >}
 ```
 
-
-
 {{< mark text="好喜欢蓝色！" >}}
-
-
-
-
 
 <span class="blur">一些手动打码效果！<br>但总之换行的话就加个空标签。</span>
 
@@ -142,7 +147,9 @@ custom.scss 添加代码，根据自己需求修改 gap
 
 ## REF
 
-https://www.blain.top/p/renovation/
+[建站技术 | 使用 Hugo &#43; Stack 简单搭建一个博客](https://blog.reincarnatey.net/2023/build-hugo-blog-with-stack-mod/#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8Frss)
+
+[小白hugo博客装修笔记（1）](https://www.blain.top/p/renovation/)
 
 [个人网站的建立过程（三）：Hugo主题stack的使用与优化](https://jinli.io/p/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B%E4%B8%89hugo%E4%B8%BB%E9%A2%98stack%E7%9A%84%E4%BD%BF%E7%94%A8%E4%B8%8E%E4%BC%98%E5%8C%96/#%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%BC%98%E5%8C%96%E4%B8%BB%E9%A2%98)
 
