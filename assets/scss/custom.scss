@@ -218,7 +218,6 @@ mark{
   }
 }
 
-
 // 搜索菜单动画
 .search-form.widget {
   transition: transform 0.6s ease;
@@ -267,7 +266,7 @@ mark{
 .tagCloud {
   .tagCloud-tags {
     a {
-      position: relative; /*  确保伪元素可以相对于 <a> 定位 */
+      position: relative;
       background: black;
       box-shadow: var(--shadow-l1);
       border-radius: 0 5px 5px 0;
@@ -285,8 +284,8 @@ mark{
       left: 8px; /*  调整小圆点的水平位置，使其位于标签左侧一定距离 */
       top: 50%; /*  垂直居中 */
       transform: translateY(-50%); /*  使用 translateY 进一步垂直居中对齐 */
-      width: 8px; /*  设置小圆点的宽度 */
-      height: 8px; /*  设置小圆点的高度 */
+      width: 4px; /*  设置小圆点的宽度 */
+      height: 4px; /*  设置小圆点的高度 */
       background-color: white; /*  小圆点的背景颜色，这里设置为白色，可以根据需要调整 */
       border-radius: 50%; /*  设置为 50% 实现圆形效果 */
     }
@@ -296,7 +295,8 @@ mark{
 // .tagCloud {
 //   .tagCloud-tags {
 //     a {
-//       background: black; /* 将背景颜色改为黑色 */
+//       position: relative;
+//       background: black;
 //       box-shadow: var(--shadow-l1); /* 保留或调整阴影效果 */
 //       border-radius: 0 5px 5px 0; /* 仅右侧添加圆角，左侧不加圆角，以配合尖角形状 */
 //       padding: 6px 20px; /* 调整 padding 值，左右 padding 可以稍大一些 */
@@ -305,17 +305,16 @@ mark{
 //       transition: all 0.3s ease;
 //       clip-path: polygon(20px 0, 0 50%, 20px 100%, 100% 100%, 100% 0); /* 使用 clip-path 裁剪出左侧尖角形状 */
       
-//       position: relative; /* 使伪元素能够正确定位 */
 //     }
     
 //     a::before  {
 //       content: ''; /* 创建一个空的内容 */
 //       position: absolute;
-//       left: 10px; /* 右边距调整，可以根据需要微调 */
+//       left: 10px;
 //       top: 50%;
 //       transform: translateY(-50%); /* 使圆点垂直居中 */
-//       width: 8px; /* 圆点的宽度 */
-//       height: 8px; /* 圆点的高度 */
+//       width: 4px; /* 圆点的宽度 */
+//       height: 4px; /* 圆点的高度 */
 //       border-radius: 50%; /* 使其变为圆形 */
 //       background-color: white; /* 圆点的颜色 */
 //     }
