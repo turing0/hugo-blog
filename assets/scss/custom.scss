@@ -71,30 +71,32 @@ mark{
   }
 }
 
+// 行内代码背景色和字体颜色
 // 现代深蓝
 :root {
-  /* 行内代码背景色 */
   --code-background-color: #e1eaff;  /* 浅深蓝色 */
-  /* 行内代码前景色 */
   --code-text-color: #003366;  /* 深蓝色 */
+
+  &[data-scheme="dark"] {
+    --code-background-color: #1c2833;
+    --code-text-color: #3498db;
+  }
+  // &[data-scheme="dark"] {
+  //   --code-background-color: #1a2638;
+  //   --code-text-color: #7fdbff;
+  // }
 }
 // 平静专业蓝
 // :root {
-//   // 行内代码背景色
 //   --code-background-color: #f0f4ff;
-//   // 行内代码前景色
 //   --code-text-color: #5a67d8;
 // }
 // :root {
-//   /* 行内代码背景色 */
 //   --code-background-color: #e3f2fd;  /* 浅蓝色 */
-//   /* 行内代码前景色 */
 //   --code-text-color: #1976d2;  /* 蓝色 */
 // }
 // :root {
-//   /* 行内代码背景色 */
 //   --code-background-color: #fff4e1;  /* 米色 */
-//   /* 行内代码前景色 */
 //   --code-text-color: #c75c5c;  /* 红棕色 */
 // }
 // 鲜艳红

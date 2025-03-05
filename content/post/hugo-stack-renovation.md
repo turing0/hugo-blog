@@ -142,8 +142,6 @@ custom.scss 添加代码
 
 
 
-
-
 ### 左侧导航栏菜单间距
 
 custom.scss 添加代码，根据自己需求修改 gap
@@ -161,6 +159,35 @@ custom.scss 添加代码，根据自己需求修改 gap
   }
 }
 ```
+
+
+
+### 主页右侧导航栏去除归档和分类
+
+`hugo.yaml` 配置
+
+```scss
+    widgets:
+        homepage:
+            - type: search
+            # - type: archives
+            #   params:
+            #       limit: 5
+            # - type: categories
+            #   params:
+            #       limit: 10
+            - type: tag-cloud
+              params:
+                  limit: 10
+        page:
+            - type: toc
+```
+
+
+
+
+
+
 
 ---
 
