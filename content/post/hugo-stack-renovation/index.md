@@ -6,6 +6,8 @@ date: 2025-03-02 08:13:09
 
 装修下博客
 
+
+
 ## 网站
 
 以下的 `custom.scss` 均指  `博客根目录/assets/scss/custom.scss` 文件。
@@ -236,8 +238,6 @@ custom.scss 添加代码，根据自己需求修改 gap
 { $isBlogPost := eq .Section "post" }}
 ```
 
-
-
 我们用这个判断当前页面是不是处于 post 下，这里根据你自己的主题可能需要修改具体的值，因为 stack 主题博文都是保存在 `/content/post` 下，所以这里写的是post，根据你自己的情况调整。
 
 最后一行添加如下代码：
@@ -410,15 +410,37 @@ custom.scss 添加代码，根据自己需求修改 gap
 
 以下代码块的内容实际使用请记得将大括号换成双大括号哦。
 
-### animated_text 动态文字
+### animated-text 动态文字
 
-`{< animated_text text="L a p h e l"  >}`
+`{< animated-text text="L a p h e l"  >}`
 
-{{< animated_text  text="L a p h e l"  >}}
+{{< animated-text  text="L a p h e l"  >}}
 
-`{< animated_text text="哈哈" align="right" >}`
+`{< animated-text text="哈哈" align="right" >}`
 
-{{< animated_text text="哈哈" align="right"  >}}
+{{< animated-text text="哈哈" align="right"  >}}
+
+
+
+### glow-quote 发光的quote
+
+{{< glow-quote>}}
+YouTube has surpassed 50 million Music and Premium subscribers, including trialers, and is the fastest growing music subscription service out there (MiDIA).
+
+{{< /glow-quote>}}
+
+---
+
+{{< glow-quote glowColor="rgba(214, 236, 255, 0.95)" glowSize="50px" blurAmount="25px" fontSize="1.8rem" >}}
+“ The unique offerings of YouTube Music and Premium are 
+resonating in established and emerging music markets alike. We’re seeing
+ impressive growth in countries like Korea, India, Japan, Russia & 
+Brazil where music is a top passion.”
+{{< /glow-quote>}}
+
+
+
+
 
 <font class="colorfulfont"> 我挑的配色很好看吧！<br>好喜欢蓝色（再次）（再次）<br> 但总之换行的话就加个空标签。</font>
 

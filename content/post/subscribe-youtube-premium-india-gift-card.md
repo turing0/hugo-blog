@@ -4,6 +4,7 @@ slug: subscribe-youtube-premium-india-gift-card
 date: 2024-12-29 14:07:00
 tags:
 categories:
+image: "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/youtube-logo.jpeg"
 ---
 
 <img title="" src="https://www.gstatic.com/youtube/img/promos/growth/53723e837c902a1ea814db4f77832f38a6bb3e101fb5933c4f85636a218bb70b_382x62.png" alt="" width="">
