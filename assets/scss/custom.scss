@@ -185,3 +185,25 @@ mark{
 .search-form.widget:hover {
   transform: scale(1.1, 1.1);
 }
+
+// 右侧标签云样式
+.tagCloud {
+  .tagCloud-tags {
+
+      a {
+          background: var(--card-background);
+          box-shadow: var(--shadow-l1);
+          border-radius: 50px;
+          // padding: 6px 16px;
+          color: var(--card-text-color-main);
+          font-size: 1.4rem;
+          transition: all 0.3s ease;
+
+          // &:hover {
+          //     box-shadow: var(--shadow-l2);
+          //     transform: translateY(-2px); // 轻微上浮效果
+          //     background: var(--card-background-selected, var(--card-background)); // 如果定义了选中背景色则使用
+          // }
+      }
+  }
+}
