@@ -13,7 +13,7 @@
 
 {{ if (.Context.Scratch.Get "TOCEnabled") }}
     <!-- 按钮，用于展开和收起目录 -->
-    <button id="toggle-toc">Toc</button>
+    <button id="toggle-toc" class="mobile-only">Toc</button>
     <section class="widget archives" id="toc-container">
         <!-- 创建一个带有 "archives" 类的区块，并添加一个唯一的 ID 用于操作 -->
         <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
@@ -28,6 +28,11 @@
 {{ end }}
 
 <style>
+    /* 默认隐藏移动端目录元素 */
+    .mobile-only {
+        display: none !important;
+    }
+    
     #toc-container {
         display: none;
         /* 初始时隐藏目录 */
@@ -84,6 +89,10 @@
     }
     
     @media screen and (max-width: 768px) {
+        .mobile-only {
+            display: block !important;
+        }
+        
         #toggle-toc {
             bottom: 100px;
         }
