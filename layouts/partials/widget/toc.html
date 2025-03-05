@@ -12,8 +12,8 @@
 {{ end }}
 
 {{ if (.Context.Scratch.Get "TOCEnabled") }}
+    <!-- 按钮，用于展开和收起目录 -->
     <button id="toggle-toc">Toc</button>
-    <!-- 创建一个按钮，用于展开和收起目录 -->
     <section class="widget archives" id="toc-container">
         <!-- 创建一个带有 "archives" 类的区块，并添加一个唯一的 ID 用于操作 -->
         <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
@@ -28,10 +28,6 @@
 {{ end }}
 
 <style>
-    #mulu {
-        z-index: 9999;
-    }
-    
     #toc-container {
         display: none;
         /* 初始时隐藏目录 */
@@ -98,7 +94,7 @@
     // 获取按钮和目录的元素
     var toggleButton = document.getElementById('toggle-toc');
     var tocContainer = document.getElementById('toc-container');
-    var scrollThreshold = 200; // 设置滚动显示的阈值
+    var scrollThreshold = 100; // 设置滚动显示的阈值
 
     // 监听页面滚动事件
     window.addEventListener('scroll', function() {
@@ -128,7 +124,6 @@
     toggleButton.addEventListener('mouseover', function() {
         tocContainer.style.display = 'block';
     });
-
 
     // 添加点击页面空白处的事件处理程序
     document.addEventListener('click', function(event) {
