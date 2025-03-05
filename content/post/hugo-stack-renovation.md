@@ -336,4 +336,4 @@ https://www.sleepymoon.cyou/2023/hugo-shortcodes/
 
 https://ghjayce.github.io/p/static-site-generator/hugo/hugo-theme-stack-gallery-study/
 
-https://www.xalaok.top/post/stack-modify/
+https://www.xalaok.top/post/stack-modify/#%E9%A6%96%E9%A1%B5%E6%AC%A2%E8%BF%8E%E6%A8%AA%E5%B9%85
