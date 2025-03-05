@@ -328,6 +328,8 @@ https://zhuanlan.zhihu.com/p/688275787
 
 [Hugo Stack主题更新小记](https://xrg.fj.cn/p/hugo-stack%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%B0%8F%E8%AE%B0/)
 
+https://innerso.prvcy.page/posts/configure-waline/
+
 https://yelleis.top/p/61fdb627/
 
 https://www.sleepymoon.cyou/2023/hugo-shortcodes/
