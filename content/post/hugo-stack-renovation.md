@@ -187,6 +187,58 @@ custom.scss 添加代码，根据自己需求修改 gap
 
 
 
+### 添加上一篇下一篇文章
+
+`主题根目录/layouts/_default/single.html`
+
+在 {{ partial "article/components/related-content" . }} 下方添加代码
+
+```html
+    <div class="pre-next">
+        {{with .PrevInSection}}
+            <a class="pre-next-btn bg" href="{{.Permalink}}"><< {{ .Title }}</a>
+        {{end}}
+        {{with .NextInSection}}
+            <a class="pre-next-btn bg" href="{{.Permalink}}">{{ .Title }} >></a>
+        {{end}}
+    </div>
+```
+
+`custom.scss`添加样式
+
+```scss
+// 上一篇下一篇的样式
+.pre-next {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+.pre-next-btn {
+  font-size: 1.4rem;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+@media (max-width: 768px) {
+  .pre-next {
+    flex-direction: column;
+    align-items: center;
+  }
+  .pre-next-btn {
+    font-size: 3.5vw;
+    padding: 12px 25px;
+    margin: 10px 0;
+  }
+}
+```
+
+
+
+
+
 
 
 ---
