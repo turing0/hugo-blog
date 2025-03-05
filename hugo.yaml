@@ -10,7 +10,7 @@ DefaultContentLanguage: en
 
 # Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
 # This will make .Summary and .WordCount behave correctly for CJK languages.
-hasCJKLanguage: false
+hasCJKLanguage: true
 
 languages:
     en:
@@ -20,13 +20,13 @@ languages:
         params:
             sidebar:
                 subtitle: 让一让，母牛们，生命短暂啊！
-    zh-cn:
-        languageName: 中文
-        title: Laphel
-        weight: 2
-        params:
-            sidebar:
-                subtitle: 演示说明
+    # zh-cn:
+    #     languageName: 中文
+    #     title: Laphel
+    #     weight: 2
+    #     params:
+    #         sidebar:
+    #             subtitle: 让一让，母牛们，生命短暂啊！
     # ar:
     #     languageName: عربي
     #     languagedirection: rtl
@@ -60,7 +60,7 @@ params:
 
     footer:
         since: 2020
-        customText:
+        customText: ❤
 
     dateFormat:
         published: Jan 02, 2006
