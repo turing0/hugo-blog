@@ -6,12 +6,6 @@ date: 2025-03-02 08:13:09
 
 装修下博客
 
-
-
-
-
-
-
 ## 网站
 
 以下的 `custom.scss` 均指  `博客根目录/assets/scss/custom.scss` 文件。
@@ -46,8 +40,6 @@ custom.scss 添加代码
   margin: auto;
 }
 ```
-
-
 
 ### 归档页面
 
@@ -84,11 +76,7 @@ custom.scss 添加代码
 .article-list--tile article:hover {
   transform: scale(1.03, 1.03);
 }
-
-
 ```
-
-
 
 **归档页面两栏**
 
@@ -112,8 +100,6 @@ custom.scss 添加代码
   }
 }
 ```
-
-
 
 #### 归档页面显示文章副标题/简介
 
@@ -143,12 +129,6 @@ custom.scss 添加代码
 {{ end }}
 ```
 
-
-
-
-
-
-
 ### 左侧导航栏菜单间距
 
 custom.scss 添加代码，根据自己需求修改 gap
@@ -167,13 +147,11 @@ custom.scss 添加代码，根据自己需求修改 gap
 }
 ```
 
-
-
 ### 主页右侧导航栏去除归档和分类
 
 `hugo.yaml` 配置
 
-```scss
+```yaml
     widgets:
         homepage:
             - type: search
@@ -189,10 +167,6 @@ custom.scss 添加代码，根据自己需求修改 gap
         page:
             - type: toc
 ```
-
-
-
-
 
 ### 添加上一篇下一篇文章
 
@@ -241,6 +215,190 @@ custom.scss 添加代码，根据自己需求修改 gap
   }
 }
 ```
+
+### 博客文章下缩小左导航栏
+
+当在阅读文章页面时，我觉得左侧导航栏有点不好看，希望能沉浸式阅读，于是有了下面的修改。
+
+具体修改：电脑端时且在阅读博客文章时，不显示头像，描述和社交链接，以及左导航栏的文字内容。移动端需要显示，所以这就涉及到结合 css 媒体查询进行条件渲染了。
+
+效果：
+
+![shrink-result](shrink-result.png)
+
+添加文件 `/layouts/partials/sidebar/left.html`
+
+先将主题根目录的此文件复制过来，我们在此基础修改，很简单。
+
+顶行添加变量定义 `{{ $isBlogPost := eq .Section "post" }}`，我们用这个判断当前页面是不是处于 post 下，这里根据你自己的主题可能需要修改具体的值，因为 stack 主题博文都是保存在 `/content/post` 下，所以这里写的是post，根据你自己的情况调整。
+
+
+
+最后一行添加内容
+
+```html
+<style>
+    /* 默认状态：始终显示 */
+    .hidden-post {
+        display: block;
+    }
+
+    /* 判断isBlogPost为真且是非移动端时隐藏 */
+    @media (min-width: 769px) {
+        {{ if $isBlogPost }}
+        .hidden-post {
+            display: none;
+        }
+        {{ end }}
+    }
+
+    /* 在移动端（max-width: 768px）时，强制显示 */
+    @media (max-width: 768px) {
+        .hidden-post {
+            display: block !important;
+        }
+    }
+</style>
+```
+
+我们用 hidden-post 来控制是否隐藏，现在只需要在我们希望的元素上添加上这个class即可。
+
+完整代码：
+
+```html
+{{ $isBlogPost := eq .Section "post" }}
+
+<aside class="sidebar left-sidebar sticky {{ if .Site.Params.sidebar.compact }}compact{{ end }}">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="{{ T `toggleMenu` }}">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+    
+    <header>
+        {{ with .Site.Params.sidebar.avatar }}
+            {{ if (default true .enabled) }}
+                <figure class="site-avatar hidden-post">
+                    <a href="{{ .Site.BaseURL | relLangURL }}">
+                        {{ if not .local }}
+                            <img src="{{ .src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                        {{ else }}
+                            {{ $avatar := resources.Get (.src) }}
+                            
+                            {{ if $avatar }}
+                                {{ $avatarResized := $avatar.Resize "300x" }}
+                                <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
+                                    height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+                            {{ else }}
+                                {{ errorf "Failed loading avatar from %q" . }}
+                            {{ end }}
+                        {{ end }}
+                    </a>
+                    {{ with $.Site.Params.sidebar.emoji }}
+                        <span class="emoji">{{ . }}</span>
+                    {{ end }}
+                </figure>
+            {{ end }}
+        {{ end }}
+
+        <div class="site-meta">
+            <h1 class="site-name hidden-post"><a href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Title }}</a></h1>
+            <h2 class="site-description hidden-post">{{ .Site.Params.sidebar.subtitle }}</h2>
+        </div>
+    </header>
+
+    {{ with .Site.Menus.social -}}
+        <ol class="menu-social">
+            {{ range . }}
+                <li class="hidden-post">
+                    <a 
+                        href='{{ .URL }}'
+                        {{ if eq (default true .Params.newTab) true }}target="_blank"{{ end }}
+                        {{ with .Name }}title="{{ . }}"{{ end }}
+                        rel="me"
+                    >
+                        {{ $icon := default "link" .Params.Icon }}
+                        {{ with $icon }}
+                            {{ partial "helper/icon" . }}
+                        {{ end }}
+                    </a>
+                </li>
+            {{ end }}
+        </ol>
+    {{- end -}}
+
+    <ol class="menu" id="main-menu">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+        <li {{ if $active }} class='current' {{ end }}>
+            <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                {{ $icon := default .Pre .Params.Icon }}
+                {{ if .Pre }}
+                    {{ warnf "Menu item [%s] is using [pre] field to set icon, please use [params.icon] instead.\nMore information: https://stack.jimmycai.com/config/menu" .URL }}
+                {{ end }}
+                {{ with $icon }}
+                    {{ partial "helper/icon" . }}
+                {{ end }}
+                    <span class="hidden-post">{{- .Name -}}</span>
+            </a>
+        </li>
+        {{ end }}
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                {{- $currentLanguageCode := .Language.Lang -}}
+                {{ if ( compare.Gt .Site.Home.AllTranslations.Len 1 ) }}
+                    {{ with .Site.Home.AllTranslations }}
+                        <li id="i18n-switch">  
+                            {{ partial "helper/icon" "language" }}
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                {{ range . }}
+                                    <option value="{{ .Permalink }}" {{ if eq .Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
+                                {{ end }}
+                            </select>
+                        </li>
+                    {{ end }}
+                {{ end }}
+
+                {{ if (default false .Site.Params.colorScheme.toggle) }}
+                    <li id="dark-mode-toggle">
+                        {{ partial "helper/icon" "toggle-left" }}
+                        {{ partial "helper/icon" "toggle-right" }}
+                        <span class="hidden-post">{{ T "darkMode" }}</span>
+                    </li>
+                {{ end }}
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+<style>
+    /* 默认状态：始终显示 */
+    .hidden-post {
+        display: block;
+    }
+
+    /* 判断isBlogPost为真且是非移动端时隐藏 */
+    @media (min-width: 769px) {
+        {{ if $isBlogPost }}
+        .hidden-post {
+            display: none;
+        }
+        {{ end }}
+    }
+
+    /* 在移动端（max-width: 768px）时，强制显示 */
+    @media (max-width: 768px) {
+        .hidden-post {
+            display: block !important;
+        }
+    }
+</style>
+```
+
+如果你在用的编辑器报错，不用管他，这是因为 html 没有 hugo 的模板语法。
+
+
 
 
 
