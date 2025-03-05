@@ -71,6 +71,43 @@ mark{
   }
 }
 
+// 现代深蓝
+:root {
+  /* 行内代码背景色 */
+  --code-background-color: #e1eaff;  /* 浅深蓝色 */
+  /* 行内代码前景色 */
+  --code-text-color: #003366;  /* 深蓝色 */
+}
+// 平静专业蓝
+// :root {
+//   // 行内代码背景色
+//   --code-background-color: #f0f4ff;
+//   // 行内代码前景色
+//   --code-text-color: #5a67d8;
+// }
+// :root {
+//   /* 行内代码背景色 */
+//   --code-background-color: #e3f2fd;  /* 浅蓝色 */
+//   /* 行内代码前景色 */
+//   --code-text-color: #1976d2;  /* 蓝色 */
+// }
+// :root {
+//   /* 行内代码背景色 */
+//   --code-background-color: #fff4e1;  /* 米色 */
+//   /* 行内代码前景色 */
+//   --code-text-color: #c75c5c;  /* 红棕色 */
+// }
+// 鲜艳红
+// :root {
+//   --code-background-color: #fff5f5;
+//   --code-text-color: #e53e3e;
+// }
+// 柔和绿
+// :root {
+//   --code-background-color: #f0fff4;
+//   --code-text-color: #38a169;
+// }
+
 // 固定代码块的高度
 .highlight {
     background-color: var(--pre-background-color);
@@ -97,6 +134,8 @@ mark{
 
 // 左侧导航栏菜单间距
 #main-menu {
+  margin: auto;
+
   &, .menu-bottom-section ol {
       flex-direction: column;
       gap: 20px;
