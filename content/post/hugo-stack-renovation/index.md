@@ -230,11 +230,17 @@ custom.scss 添加代码，根据自己需求修改 gap
 
 先将主题根目录的此文件复制过来，我们在此基础修改，很简单。
 
-顶行添加变量定义 `{{ $isBlogPost := eq .Section "post" }}`，我们用这个判断当前页面是不是处于 post 下，这里根据你自己的主题可能需要修改具体的值，因为 stack 主题博文都是保存在 `/content/post` 下，所以这里写的是post，根据你自己的情况调整。
+顶行添加变量定义：
+
+```html
+{ $isBlogPost := eq .Section "post" }}
+```
 
 
 
-最后一行添加内容
+我们用这个判断当前页面是不是处于 post 下，这里根据你自己的主题可能需要修改具体的值，因为 stack 主题博文都是保存在 `/content/post` 下，所以这里写的是post，根据你自己的情况调整。
+
+最后一行添加如下代码：
 
 ```html
 <style>
@@ -261,9 +267,9 @@ custom.scss 添加代码，根据自己需求修改 gap
 </style>
 ```
 
-我们用 hidden-post 来控制是否隐藏，现在只需要在我们希望的元素上添加上这个class即可。
+我们用 hidden-post 来控制是否隐藏，现在只需要在我们希望的元素上添加上这个 class 即可。
 
-完整代码：
+最终的完整代码：
 
 ```html
 {{ $isBlogPost := eq .Section "post" }}
@@ -274,7 +280,7 @@ custom.scss 添加代码，根据自己需求修改 gap
             <span class="hamburger-inner"></span>
         </span>
     </button>
-    
+
     <header>
         {{ with .Site.Params.sidebar.avatar }}
             {{ if (default true .enabled) }}
@@ -284,7 +290,7 @@ custom.scss 添加代码，根据自己需求修改 gap
                             <img src="{{ .src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
                         {{ else }}
                             {{ $avatar := resources.Get (.src) }}
-                            
+
                             {{ if $avatar }}
                                 {{ $avatarResized := $avatar.Resize "300x" }}
                                 <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
@@ -397,14 +403,6 @@ custom.scss 添加代码，根据自己需求修改 gap
 ```
 
 如果你在用的编辑器报错，不用管他，这是因为 html 没有 hugo 的模板语法。
-
-
-
-
-
-
-
-
 
 ---
 
