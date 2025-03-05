@@ -10,34 +10,7 @@ date: 2025-03-02 08:13:09
 
 
 
----
 
-```python
-@bot.command(aliases=['s'])
-async def stock(ctx, stock: str, days: int = 93):
-    channel_id = ctx.channel.id
-    if channel_id not 7494]:
-        await ctx.send(content=f"此频道不可使用此命令")
-        return
-    stock = stock.upper()
-    stock_list = stock.split(',')
-    for stock in stock_list:
-        try:
-            if len(stock) < 3 or stock[-3] != '.':
-                stock = stock+'.US'
-            today = datetime.today()
-            days_ago = toda
-            df = pd.DataFrame(candle_data)
-            df['Date'] = pd.to_datetime(df['timestamp'], unit='s')
-
-            # 按日期排序
-            df = df.sort_values('Date').reset_index(drop=True)
-            # 转换数值字段
-            numeric_fields = ['open', 'close', 'low', 'high', 'volume', 'turnover']
-            for field in numeric_fields:
-                df[field] = pd.to_numeric(df[field], errors='coerce')
-            df.set_index('Date', inplace=True)
-```
 
 ## 网站
 
