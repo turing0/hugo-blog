@@ -225,7 +225,7 @@ code {
   }
 }
 
-// 
+// 归档页面显示文章副标题/简介的样式
 .article-subtitle {
   margin-top: -5px;
   font-size: 1.5rem;
@@ -295,3 +295,41 @@ code {
   }
 }
 
+/* 移动端屏幕尺寸 CSS 媒体查询 */
+@media screen and (max-width: 768px) {
+  .mobile-toc-container {
+      /* 移动端目录父容器样式调整（如果需要） */
+  }
+
+  #toggle-toc {
+      display: block; /* 在移动端显示按钮 */
+  }
+
+  #toc-container {
+      display: none; /* 移动端默认隐藏目录内容 */
+  }
+
+  /* 如果需要移动端默认展开目录，可以将 #toc-container 的 display: none;  注释掉或移除 */
+  /* #toc-container {
+  *    display: block;
+  * } */
+}
+/*  桌面端屏幕尺寸 CSS 媒体查询 (大于移动端断点)  */
+@media screen and (min-width: 769px) {
+  .mobile-toc-container {
+      display: none; /* 在桌面端隐藏整个移动端目录容器 */
+  }
+
+  /* 如果您想在桌面端也显示目录，只是位置或样式不同，可以注释掉上面的 display: none;  并添加桌面端目录的 CSS 样式 */
+  /* .mobile-toc-container {
+  *    display: block;  // 或者其他适合的显示方式
+  * }
+  * #toc-container {
+  *    display: block; //  显示目录内容
+  *    //  添加桌面端目录的样式  例如浮动到侧边栏等
+  * }
+  * #toggle-toc {
+  *    display: none; // 桌面端隐藏按钮，如果不需要
+  * }
+  */
+}
