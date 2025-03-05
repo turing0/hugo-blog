@@ -115,6 +115,40 @@ custom.scss 添加代码
 
 
 
+#### 归档页面显示文章副标题/简介
+
+`custom.scss` 添加代码
+
+```scss
+.article-subtitle {
+    margin-top: -5px;
+    font-size: 1.5rem;
+
+    @include respond(md) {
+        font-size: 1.6rem;
+    }
+}
+```
+
+`主题根目录/layouts/partials/article-list/compact.html` 开头 h2 下方添加代码
+
+```html
+<h2 class="article-title">
+    {{- .Title -}}
+</h2>
+{{ with .Params.description }}
+    <div class="article-subtitle">
+        {{ . }}
+    </div>
+{{ end }}
+```
+
+
+
+
+
+
+
 ### 左侧导航栏菜单间距
 
 custom.scss 添加代码，根据自己需求修改 gap

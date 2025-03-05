@@ -71,6 +71,13 @@ mark{
   }
 }
 
+// 缩小代码块的字体大小
+code {
+  // border-radius: var(--tag-border-radius);
+  font-size: 14px;
+  // font-family: var(--code-font-family);
+}
+
 // 行内代码背景色和字体颜色
 // 现代深蓝
 :root {
@@ -218,6 +225,17 @@ mark{
   }
 }
 
+// 
+.article-subtitle {
+  margin-top: -5px;
+  font-size: 1.5rem;
+
+  @include respond(md) {
+      font-size: 1.6rem;
+  }
+}
+
+
 // 搜索菜单动画
 .search-form.widget {
   transition: transform 0.6s ease;
@@ -226,7 +244,7 @@ mark{
   transform: scale(1.1, 1.1);
 }
 
-// 右侧标签云样式
+// 右侧标签云圆角样式
 // .tagCloud {
 //   .tagCloud-tags {
 //       a {
@@ -276,3 +294,5 @@ mark{
     }
   }
 }
+
+
