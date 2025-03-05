@@ -229,7 +229,6 @@ mark{
 // 右侧标签云样式
 // .tagCloud {
 //   .tagCloud-tags {
-
 //       a {
 //           background: var(--card-background);
 //           box-shadow: var(--shadow-l1);
@@ -247,22 +246,7 @@ mark{
 //       }
 //   }
 // }
-// 右侧标签云样式
-// .tagCloud {
-//   .tagCloud-tags {
-//     a {
-//       background: black; /* 将背景颜色改为黑色 */
-//       box-shadow: var(--shadow-l1); /* 保留或调整阴影效果 */
-//       border-radius: 0 5px 5px 0; /*  仅右侧添加圆角，左侧不加圆角，以配合尖角形状 */
-//       padding: 6px 20px; /* 调整 padding 值，左右 padding 可以稍大一些 */
-//       color: white; /* 将文字颜色改为白色或浅色，以便在黑色背景上清晰显示 */
-//       font-size: 1.4rem;
-//       transition: all 0.3s ease;
-//       clip-path: polygon(20px 0, 0 50%, 20px 100%, 100% 100%, 100% 0); /* 使用 clip-path 裁剪出左侧尖角形状 */
-//     }
-//   }
-// }
-
+// 右侧标签云样式：现代化 tag
 .tagCloud {
   .tagCloud-tags {
     a {
@@ -277,46 +261,18 @@ mark{
       clip-path: polygon(20px 0, 0 50%, 20px 100%, 100% 100%, 100% 0);
     }
 
+    // 添加小圆点
     a::before {
       content: ''; /*  伪元素必须要有 content 属性，即使内容为空 */
       display: block; /*  将伪元素设置为块级元素，以便设置宽高 */
       position: absolute; /*  绝对定位，使其相对于 <a> 元素定位 */
-      left: 8px; /*  调整小圆点的水平位置，使其位于标签左侧一定距离 */
+      left: 10px; /*  调整小圆点的水平位置，使其位于标签左侧一定距离 */
       top: 50%; /*  垂直居中 */
       transform: translateY(-50%); /*  使用 translateY 进一步垂直居中对齐 */
       width: 4px; /*  设置小圆点的宽度 */
       height: 4px; /*  设置小圆点的高度 */
-      background-color: white; /*  小圆点的背景颜色，这里设置为白色，可以根据需要调整 */
+      background-color: white; /*  圆点的颜色 */
       border-radius: 50%; /*  设置为 50% 实现圆形效果 */
     }
   }
 }
-
-// .tagCloud {
-//   .tagCloud-tags {
-//     a {
-//       position: relative;
-//       background: black;
-//       box-shadow: var(--shadow-l1); /* 保留或调整阴影效果 */
-//       border-radius: 0 5px 5px 0; /* 仅右侧添加圆角，左侧不加圆角，以配合尖角形状 */
-//       padding: 6px 20px; /* 调整 padding 值，左右 padding 可以稍大一些 */
-//       color: white; /* 将文字颜色改为白色或浅色，以便在黑色背景上清晰显示 */
-//       font-size: 1.4rem;
-//       transition: all 0.3s ease;
-//       clip-path: polygon(20px 0, 0 50%, 20px 100%, 100% 100%, 100% 0); /* 使用 clip-path 裁剪出左侧尖角形状 */
-      
-//     }
-    
-//     a::before  {
-//       content: ''; /* 创建一个空的内容 */
-//       position: absolute;
-//       left: 10px;
-//       top: 50%;
-//       transform: translateY(-50%); /* 使圆点垂直居中 */
-//       width: 4px; /* 圆点的宽度 */
-//       height: 4px; /* 圆点的高度 */
-//       border-radius: 50%; /* 使其变为圆形 */
-//       background-color: white; /* 圆点的颜色 */
-//     }
-//   }
-// }
