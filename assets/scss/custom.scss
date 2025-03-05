@@ -298,7 +298,7 @@ code {
 /* 移动端屏幕尺寸 CSS 媒体查询 */
 @media screen and (max-width: 768px) {
 
-  #toggle-toc {
+  .mobile-toc-container {
       display: block; /* 在移动端显示按钮 */
   }
 
