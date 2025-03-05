@@ -12,8 +12,6 @@
 {{ end }}
 
 {{ if (.Context.Scratch.Get "TOCEnabled") }}
-<!-- 如果 .Context.Scratch 中包含名为 "TOCEnabled" 的值，则执行以下代码 -->
-<div id="mulu">
     <button id="toggle-toc">Toc</button>
     <!-- 创建一个按钮，用于展开和收起目录 -->
     <section class="widget archives" id="toc-container">
@@ -27,22 +25,13 @@
             <!-- 显示文章的目录内容 -->
         </div>
     </section>
-</div>
 {{ end }}
 
 <style>
     #mulu {
         z-index: 9999;
-        display: none; /* 默认隐藏 */
     }
-
-    /* 移动端显示 */
-    @media screen and (max-width: 768px) {
-        #mulu {
-            display: block; /* 在小屏幕上显示 */
-        }
-    }
-
+    
     #toc-container {
         display: none;
         /* 初始时隐藏目录 */
@@ -70,7 +59,7 @@
         /* 让容器的宽度自适应内容 */
         max-width: 290px;
     }
-
+    
     #toggle-toc {
         position: fixed;
         bottom: 22%;
@@ -91,13 +80,13 @@
         font-size: 1.2rem;
         /* 可选：改变鼠标光标以指示按钮是可点击的 */
     }
-
+    
     .widget--toc #TableOfContents {
         overflow-x: auto;
         max-height: 66vh;
         width: auto;
     }
-
+    
     @media screen and (max-width: 768px) {
         #toggle-toc {
             bottom: 100px;
@@ -139,6 +128,7 @@
     toggleButton.addEventListener('mouseover', function() {
         tocContainer.style.display = 'block';
     });
+
 
     // 添加点击页面空白处的事件处理程序
     document.addEventListener('click', function(event) {
