@@ -329,7 +329,7 @@ custom.scss 添加代码，根据自己需求修改 gap
 </script>
 ```
 
-添加的代码：添加移动端目录按钮，section 添加 id，添加了 style 和 script 的代码。
+if 那块代码是原来主题根目录下此文件的代码，添加的代码：添加移动端目录按钮，section 添加 id，添加 style 和 script 的代码。
 
 此外，还需要在 `custom.scss` 文件中添加如下代码，不然移动端看不见按钮，就是将右栏改为 flex 布局。
 
