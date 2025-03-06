@@ -240,6 +240,7 @@ custom.scss 添加代码，根据自己需求修改 gap
 
         #toc-container {
             display: none; /* 移动端依旧隐藏目录容器，通过按钮显示 */
+            top: 2%;       /* 设置目录容器距离屏幕顶部的距离为 2% */
         }
 
         #toggle-toc {
@@ -277,55 +278,53 @@ custom.scss 添加代码，根据自己需求修改 gap
     var scrollThreshold = 100; // 设置滚动显示的阈值
 
     // 监听页面滚动事件
-    window.addEventListener('scroll', function() {
-        // 获取当前滚动位置
-        // var scrollY = window.scrollY || window.pageYOffset;
-        // 检查屏幕宽度，只在移动端执行按钮显示/隐藏逻辑
-        if (window.innerWidth <= 768) {
-            // 检查滚动位置是否超过阈值
-            // if (scrollY >= scrollThreshold) {
-            //     // 显示按钮
-            //     toggleButton.style.display = 'block';
-            // } else {
-            //     // 隐藏按钮
-            //     toggleButton.style.display = 'none';
-            // }
-            toggleButton.style.display = 'block';
+    // window.addEventListener('scroll', function() {
+    //     // 获取当前滚动位置
+    //     // var scrollY = window.scrollY || window.pageYOffset;
+    //     // 检查屏幕宽度，只在移动端执行按钮显示/隐藏逻辑
+    //     if (window.innerWidth <= 768) {
+    //         // 检查滚动位置是否超过阈值
+    //         // if (scrollY >= scrollThreshold) {
+    //         //     // 显示按钮
+    //         //     toggleButton.style.display = 'block';
+    //         // } else {
+    //         //     // 隐藏按钮
+    //         //     toggleButton.style.display = 'none';
+    //         // }
+    //         toggleButton.style.display = 'block';
+    //     } else {
+    //         // 电脑端始终隐藏按钮
+    //         toggleButton.style.display = 'none';
+    //     }
+    // });
+
+    // 添加点击事件处理程序
+    toggleButton.addEventListener('click', function() {
+        // 切换目录的显示状态
+        if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
+            tocContainer.style.display = 'block';
         } else {
-            // 电脑端始终隐藏按钮
-            toggleButton.style.display = 'none';
+            tocContainer.style.display = 'none';
         }
     });
 
-    // 添加点击事件处理程序 (只在移动端需要)
-    if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            var tocContainer = document.getElementById('toc-container'); // 每次点击时重新获取元素
-            if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
-                tocContainer.style.display = 'block !important'; // 明确设置为 block 并使用 !important
-            } else {
-                tocContainer.style.display = 'none !important';  // 明确设置为 none 并使用 !important
-            }
-        });
+    // 当鼠标悬浮在按钮上时显示目录
+    toggleButton.addEventListener('mouseover', function() {
+        // if (window.innerWidth <= 768) { // 仅在移动端悬浮显示
+            tocContainer.style.display = 'block';
+        // }
+    });
 
-        // 当鼠标悬浮在按钮上时显示目录 (只在移动端需要，或者您可以决定电脑端也保留悬浮显示)
-        toggleButton.addEventListener('mouseover', function() {
-            if (window.innerWidth <= 768) { // 仅在移动端悬浮显示
-                tocContainer.style.display = 'block';
+    // 添加点击页面空白处的事件处理程序
+    document.addEventListener('click', function(event) {
+        // if (window.innerWidth <= 768) { // 仅在移动端点击空白处隐藏
+            // 检查点击事件是否发生在目录容器之外，并且不是按钮本身
+            if (!tocContainer.contains(event.target) && event.target !== toggleButton) {
+                // 点击发生在目录容器之外，隐藏目录容器
+                tocContainer.style.display = 'none';
             }
-        });
-
-        // 添加点击页面空白处的事件处理程序 (只在移动端需要)
-        document.addEventListener('click', function(event) {
-            if (window.innerWidth <= 768) { // 仅在移动端点击空白处隐藏
-                // 检查点击事件是否发生在目录容器之外，并且不是按钮本身
-                if (!tocContainer.contains(event.target) && event.target !== toggleButton) {
-                    // 点击发生在目录容器之外，隐藏目录容器
-                    tocContainer.style.display = 'none';
-                }
-            }
-        });
-    }
+        // }
+    });
 </script>
 ```
 
@@ -344,7 +343,7 @@ if 那块代码是原来主题根目录下此文件的代码，添加的代码�
 }
 ```
 
-代码参考自：[yelleis](https://yelleis.top/p/hugo-theme-stack-beautification-2/#%E7%9B%AE%E5%BD%95%E6%8C%89%E9%92%AE)，我做了些改动，因为刚开始我直接复制代码进去在移动端是看不见的，最后反复查看才知道是flex的原因，然后保持了电脑端原本的目录。
+代码参考自：[yelleis](https://yelleis.top/p/hugo-theme-stack-beautification-2/#%E7%9B%AE%E5%BD%95%E6%8C%89%E9%92%AE)，我做了些改动和优化，因为刚开始我直接复制代码进去在移动端是看不见的，最后反复查看才知道是flex的原因，并且保持了电脑端原本的目录。
 
 
 
