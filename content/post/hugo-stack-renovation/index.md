@@ -159,25 +159,14 @@ custom.scss 添加代码，根据自己需求修改 gap
 
 ```html
 {{ if (.Context.Scratch.Get "TOCEnabled") }}
-    <!-- toc 按钮，用于展开和收起目录 -->
+    <!-- 移动端目录按钮 -->
     <button id="toggle-toc" class="mobile-only">Toc</button>
     <section class="widget archives" id="toc-container">
-        <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
-        <!-- 创建一个带有 "widget-title" 和 "section-title" 类的标题区块，并显示 "article.tableOfContents" 的本地化内容 -->
-
-        <div class="widget--toc">
-            {{ .Context.TableOfContents }}
-        </div>
-    </section>
-{{ end }}
-
-{{ if (.Context.Scratch.Get "TOCEnabled") }}
-    <section class="widget archives">
         <div class="widget-icon">
             {{ partial "helper/icon" "hash" }}
         </div>
         <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
-        
+
         <div class="widget--toc">
             {{ .Context.TableOfContents }}
         </div>
@@ -185,20 +174,20 @@ custom.scss 添加代码，根据自己需求修改 gap
 {{ end }}
 
 <style>
-    /* 默认隐藏移动端目录元素 */
+    /* 默认隐藏移动端目录元素，电脑端将覆盖显示 */
     .mobile-only {
         display: none !important;
     }
-    
+
     #toc-container {
-        display: none;
-        /* 初始时隐藏目录 */
+        /* 初始时不再隐藏目录，电脑端默认显示，移动端会被覆盖隐藏 */
+        /* display: none;  */
         position: fixed;
         /* 使用固定定位，使其固定在视口中 */
         bottom: 21%;
-        /* 距离视口顶部的距离，可以根据需要进行调整 */
+        /* 距离视口顶部的距离 */
         right: 60px;
-        /* 距离视口右侧的距离，可以根据需要进行调整 */
+        /* 距离视口右侧的距离 */
         background-color: var(--card-background);
         /* 可选：设置背景颜色 */
         padding: 10px;
@@ -217,7 +206,7 @@ custom.scss 添加代码，根据自己需求修改 gap
         /* 让容器的宽度自适应内容 */
         max-width: 290px;
     }
-    
+
     #toggle-toc {
         position: fixed;
         bottom: 22%;
@@ -231,33 +220,58 @@ custom.scss 添加代码，根据自己需求修改 gap
         color: #34495e;
         /* 确保按钮在其他元素之上 */
         /* 其他样式保持不变 */
-        display: block;
-        /* 显示按钮 */
-        margin-bottom: 10px;
+        display: none; /* 初始时在电脑端也隐藏按钮，移动端通过媒体查询显示 */
+        margin-bottom: -20px;
         cursor: pointer;
         font-size: 1.2rem;
         /* 可选：改变鼠标光标以指示按钮是可点击的 */
     }
-    
+
     .widget--toc #TableOfContents {
         overflow-x: auto;
         max-height: 66vh;
         width: auto;
     }
-    
+
     @media screen and (max-width: 768px) {
         .mobile-only {
-            display: block !important;
+            display: block !important; /* 移动端显示 'Toc' 按钮 */
         }
-        
+
+        #toc-container {
+            display: none; /* 移动端依旧隐藏目录容器，通过按钮显示 */
+        }
+
         #toggle-toc {
-            bottom: 100px;
+            display: block; /* 移动端显示 toggle 按钮 */
+            bottom: 100px; /* 移动端按钮位置调整 */
+        }
+    }
+
+    /* 电脑端样式：屏幕宽度大于 768px 时应用 */
+    @media screen and (min-width: 769px) {
+        #toc-container {
+            display: block !important; /* 电脑端默认显示目录容器 */
+            position: static; /* 移除固定定位，让目录在正常文档流中 */
+            border: none; /* 移除边框 */
+            box-shadow: none; /* 移除阴影 */
+            max-height: none; /* 移除最大高度限制 */
+            overflow-y: visible; /* 移除垂直滚动条 */
+            margin-top: 20px; /* 可以根据需要添加一些顶部外边距，与页面内容区隔开 */
+            right: auto; /* 重置 right 属性 */
+            bottom: auto; /* 重置 bottom 属性 */
+            width: auto; /* 宽度自适应内容 */
+            max-width: 100%; /* 最大宽度可以设置为 100% 或您需要的宽度 */
+            background-color: transparent; /* 背景色透明，或者设置为您想要的颜色 */
+            padding: 0; /* 移除内边距 */
+        }
+
+        #toggle-toc {
+            display: none !important; /* 电脑端隐藏 'Toc' 按钮 */
         }
     }
 </style>
-
 <script>
-    // 获取按钮和目录的元素
     var toggleButton = document.getElementById('toggle-toc');
     var tocContainer = document.getElementById('toc-container');
     var scrollThreshold = 100; // 设置滚动显示的阈值
@@ -265,45 +279,57 @@ custom.scss 添加代码，根据自己需求修改 gap
     // 监听页面滚动事件
     window.addEventListener('scroll', function() {
         // 获取当前滚动位置
-        var scrollY = window.scrollY || window.pageYOffset;
-
-        // 检查滚动位置是否超过阈值
-        if (scrollY >= scrollThreshold) {
-            // 显示按钮
+        // var scrollY = window.scrollY || window.pageYOffset;
+        // 检查屏幕宽度，只在移动端执行按钮显示/隐藏逻辑
+        if (window.innerWidth <= 768) {
+            // 检查滚动位置是否超过阈值
+            // if (scrollY >= scrollThreshold) {
+            //     // 显示按钮
+            //     toggleButton.style.display = 'block';
+            // } else {
+            //     // 隐藏按钮
+            //     toggleButton.style.display = 'none';
+            // }
             toggleButton.style.display = 'block';
         } else {
-            // 隐藏按钮
+            // 电脑端始终隐藏按钮
             toggleButton.style.display = 'none';
         }
     });
 
-    // 添加点击事件处理程序
-    toggleButton.addEventListener('click', function() {
-        // 切换目录的显示状态
-        if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
-            tocContainer.style.display = 'block';
-        } else {
-            tocContainer.style.display = 'none';
-        }
-    });
-    // 当鼠标悬浮在按钮上时显示目录
-    toggleButton.addEventListener('mouseover', function() {
-        tocContainer.style.display = 'block';
-    });
+    // 添加点击事件处理程序 (只在移动端需要)
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function() {
+            var tocContainer = document.getElementById('toc-container'); // 每次点击时重新获取元素
+            if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
+                tocContainer.style.display = 'block !important'; // 明确设置为 block 并使用 !important
+            } else {
+                tocContainer.style.display = 'none !important';  // 明确设置为 none 并使用 !important
+            }
+        });
 
-    // 添加点击页面空白处的事件处理程序
-    document.addEventListener('click', function(event) {
-        // 检查点击事件是否发生在目录容器之外，并且不是按钮本身
-        if (!tocContainer.contains(event.target) && event.target !== toggleButton) {
-            // 点击发生在目录容器之外，隐藏目录容器
-            tocContainer.style.display = 'none';
-        }
-    });
+        // 当鼠标悬浮在按钮上时显示目录 (只在移动端需要，或者您可以决定电脑端也保留悬浮显示)
+        toggleButton.addEventListener('mouseover', function() {
+            if (window.innerWidth <= 768) { // 仅在移动端悬浮显示
+                tocContainer.style.display = 'block';
+            }
+        });
+
+        // 添加点击页面空白处的事件处理程序 (只在移动端需要)
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 768) { // 仅在移动端点击空白处隐藏
+                // 检查点击事件是否发生在目录容器之外，并且不是按钮本身
+                if (!tocContainer.contains(event.target) && event.target !== toggleButton) {
+                    // 点击发生在目录容器之外，隐藏目录容器
+                    tocContainer.style.display = 'none';
+                }
+            }
+        });
+    }
 </script>
-
 ```
 
-除了中间 if 那块是原来主题根目录下的代码，顶部和尾部的代码是新添加的。如果电脑端也要改为按钮这种的，去掉中间那块 if 代码，然后去掉 mobile-only 的 class 即可。
+添加的代码：添加移动端目录按钮，section 添加 id，添加了 style 和 script 的代码。
 
 此外，还需要在 `custom.scss` 文件中添加如下代码，不然移动端看不见按钮，就是将右栏改为 flex 布局。
 
