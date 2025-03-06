@@ -140,7 +140,7 @@ code {
     }
 }
 
-// 左侧导航栏菜单间距
+// 左侧导航栏主菜单上下间距
 #main-menu {
   margin: auto;
 
@@ -152,6 +152,15 @@ code {
           gap: 20px;
       }
   }
+}
+// 左侧导航栏主菜单内图标与链接的间距
+:root {
+  --menu-icon-separation: 20px;
+
+  // section 间距
+  --section-separation: 30px;
+  --widget-separation: var(--section-separation);
+
 }
 
 // 站点头像，网站名字和描述居中
