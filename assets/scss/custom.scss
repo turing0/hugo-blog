@@ -160,7 +160,13 @@ code {
   // section 间距
   --section-separation: 30px;
   --widget-separation: var(--section-separation);
+}
 
+// 右栏宽度
+.container {
+  .right-sidebar {
+    max-width: 20%;
+  }
 }
 
 // 站点头像，网站名字和描述居中
@@ -303,7 +309,7 @@ code {
   }
 }
 
-// glow-quote
+// shortcodes: glow-quote
 .glow-quote-container {
   display: flex;
   justify-content: center;
