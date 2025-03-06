@@ -344,7 +344,7 @@ if 那块代码是原来主题根目录下此文件的代码，添加的代码�
 }
 ```
 
-
+代码参考自：[yelleis](https://yelleis.top/p/hugo-theme-stack-beautification-2/#%E7%9B%AE%E5%BD%95%E6%8C%89%E9%92%AE)，我做了些改动，因为刚开始我直接复制代码进去在移动端是看不见的，最后反复查看才知道是flex的原因，然后保持了电脑端原本的目录。
 
 
 
@@ -615,7 +615,7 @@ if 那块代码是原来主题根目录下此文件的代码，添加的代码�
 
 `{< animated-text text="L a p h e l"  >}`
 
-{{< animated-text  text="L a p h e l"  >}}
+{{< animated-text text="L a p h e l"  >}}
 
 `{< animated-text text="哈哈" align="right" >}`
 

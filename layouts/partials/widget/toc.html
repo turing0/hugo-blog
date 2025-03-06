@@ -137,33 +137,33 @@
         }
     });
 
-    // 添加点击事件处理程序 (只在移动端需要)
-    if (toggleButton) {
+    // 添加点击事件处理程序
+    // if (toggleButton) {
         toggleButton.addEventListener('click', function() {
-            var tocContainer = document.getElementById('toc-container'); // 每次点击时重新获取元素
+            // 切换目录的显示状态
             if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
-                tocContainer.style.display = 'block !important'; // 明确设置为 block 并使用 !important
-            } else {
-                tocContainer.style.display = 'none !important';  // 明确设置为 none 并使用 !important
-            }
-        });
-
-        // 当鼠标悬浮在按钮上时显示目录 (只在移动端需要，或者您可以决定电脑端也保留悬浮显示)
-        toggleButton.addEventListener('mouseover', function() {
-            if (window.innerWidth <= 768) { // 仅在移动端悬浮显示
                 tocContainer.style.display = 'block';
+            } else {
+                tocContainer.style.display = 'none';
             }
         });
 
-        // 添加点击页面空白处的事件处理程序 (只在移动端需要)
+        // 当鼠标悬浮在按钮上时显示目录
+        toggleButton.addEventListener('mouseover', function() {
+            // if (window.innerWidth <= 768) { // 仅在移动端悬浮显示
+                tocContainer.style.display = 'block';
+            // }
+        });
+
+        // 添加点击页面空白处的事件处理程序
         document.addEventListener('click', function(event) {
-            if (window.innerWidth <= 768) { // 仅在移动端点击空白处隐藏
+            // if (window.innerWidth <= 768) { // 仅在移动端点击空白处隐藏
                 // 检查点击事件是否发生在目录容器之外，并且不是按钮本身
                 if (!tocContainer.contains(event.target) && event.target !== toggleButton) {
                     // 点击发生在目录容器之外，隐藏目录容器
                     tocContainer.style.display = 'none';
                 }
-            }
+            // }
         });
-    }
+    // }
 </script>
