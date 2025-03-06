@@ -1,15 +1,3 @@
-{{ if (.Context.Scratch.Get "TOCEnabled") }}
-    <section class="widget archives">
-        <div class="widget-icon">
-            {{ partial "helper/icon" "hash" }}
-        </div>
-        <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
-        
-        <div class="widget--toc">
-            {{ .Context.TableOfContents }}
-        </div>
-    </section>
-{{ end }}
 
 {{ if (.Context.Scratch.Get "TOCEnabled") }}
     <!-- 按钮，用于展开和收起目录 -->
@@ -19,6 +7,19 @@
         <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
         <!-- 创建一个带有 "widget-title" 和 "section-title" 类的标题区块，并显示 "article.tableOfContents" 的本地化内容 -->
 
+        <div class="widget--toc">
+            {{ .Context.TableOfContents }}
+        </div>
+    </section>
+{{ end }}
+
+{{ if (.Context.Scratch.Get "TOCEnabled") }}
+    <section class="widget archives">
+        <div class="widget-icon">
+            {{ partial "helper/icon" "hash" }}
+        </div>
+        <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
+        
         <div class="widget--toc">
             {{ .Context.TableOfContents }}
         </div>
