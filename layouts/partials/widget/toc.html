@@ -1,9 +1,7 @@
-
 {{ if (.Context.Scratch.Get "TOCEnabled") }}
-    <!-- 按钮，用于展开和收起目录 -->
+    <!-- toc 按钮，用于展开和收起目录 -->
     <button id="toggle-toc" class="mobile-only">Toc</button>
     <section class="widget archives" id="toc-container">
-        <!-- 创建一个带有 "archives" 类的区块，并添加一个唯一的 ID 用于操作 -->
         <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
         <!-- 创建一个带有 "widget-title" 和 "section-title" 类的标题区块，并显示 "article.tableOfContents" 的本地化内容 -->
 

@@ -149,6 +149,181 @@ custom.scss 添加代码，根据自己需求修改 gap
 }
 ```
 
+
+
+### 移动端目录按钮
+
+电脑端保持原来的目录，移动端添加一个按钮可以打开目录。
+
+添加文件 `layouts/partials/widget/toc.html`
+
+```html
+{{ if (.Context.Scratch.Get "TOCEnabled") }}
+    <!-- toc 按钮，用于展开和收起目录 -->
+    <button id="toggle-toc" class="mobile-only">Toc</button>
+    <section class="widget archives" id="toc-container">
+        <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
+        <!-- 创建一个带有 "widget-title" 和 "section-title" 类的标题区块，并显示 "article.tableOfContents" 的本地化内容 -->
+
+        <div class="widget--toc">
+            {{ .Context.TableOfContents }}
+        </div>
+    </section>
+{{ end }}
+
+{{ if (.Context.Scratch.Get "TOCEnabled") }}
+    <section class="widget archives">
+        <div class="widget-icon">
+            {{ partial "helper/icon" "hash" }}
+        </div>
+        <h2 class="widget-title section-title">{{ T "article.tableOfContents" }}</h2>
+        
+        <div class="widget--toc">
+            {{ .Context.TableOfContents }}
+        </div>
+    </section>
+{{ end }}
+
+<style>
+    /* 默认隐藏移动端目录元素 */
+    .mobile-only {
+        display: none !important;
+    }
+    
+    #toc-container {
+        display: none;
+        /* 初始时隐藏目录 */
+        position: fixed;
+        /* 使用固定定位，使其固定在视口中 */
+        bottom: 21%;
+        /* 距离视口顶部的距离，可以根据需要进行调整 */
+        right: 60px;
+        /* 距离视口右侧的距离，可以根据需要进行调整 */
+        background-color: var(--card-background);
+        /* 可选：设置背景颜色 */
+        padding: 10px;
+        /* 可选：添加一些内边距 */
+        border: 1px solid #96979a50;
+        border-radius: var(--card-border-radius);
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        /* 可选：添加边框样式 */
+        z-index: 9998 !important;
+        /* 可选：设置 z-index 以确保它显示在其他元素之上 */
+        max-height: 80vh;
+        /* 设置最大高度为视口高度的 80% */
+        overflow-y: auto;
+        /* 添加垂直滚动条，以便在内容溢出时滚动 */
+        width: auto;
+        /* 让容器的宽度自适应内容 */
+        max-width: 290px;
+    }
+    
+    #toggle-toc {
+        position: fixed;
+        bottom: 22%;
+        right: 20px;
+        padding: 10px 10px;
+        z-index: 9998 !important;
+        border: 0px solid #96979a50;
+        border-radius: 7px;
+        box-shadow: var(--shadow-l1);
+        background-color: #00640010;
+        color: #34495e;
+        /* 确保按钮在其他元素之上 */
+        /* 其他样式保持不变 */
+        display: block;
+        /* 显示按钮 */
+        margin-bottom: 10px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        /* 可选：改变鼠标光标以指示按钮是可点击的 */
+    }
+    
+    .widget--toc #TableOfContents {
+        overflow-x: auto;
+        max-height: 66vh;
+        width: auto;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .mobile-only {
+            display: block !important;
+        }
+        
+        #toggle-toc {
+            bottom: 100px;
+        }
+    }
+</style>
+
+<script>
+    // 获取按钮和目录的元素
+    var toggleButton = document.getElementById('toggle-toc');
+    var tocContainer = document.getElementById('toc-container');
+    var scrollThreshold = 100; // 设置滚动显示的阈值
+
+    // 监听页面滚动事件
+    window.addEventListener('scroll', function() {
+        // 获取当前滚动位置
+        var scrollY = window.scrollY || window.pageYOffset;
+
+        // 检查滚动位置是否超过阈值
+        if (scrollY >= scrollThreshold) {
+            // 显示按钮
+            toggleButton.style.display = 'block';
+        } else {
+            // 隐藏按钮
+            toggleButton.style.display = 'none';
+        }
+    });
+
+    // 添加点击事件处理程序
+    toggleButton.addEventListener('click', function() {
+        // 切换目录的显示状态
+        if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
+            tocContainer.style.display = 'block';
+        } else {
+            tocContainer.style.display = 'none';
+        }
+    });
+    // 当鼠标悬浮在按钮上时显示目录
+    toggleButton.addEventListener('mouseover', function() {
+        tocContainer.style.display = 'block';
+    });
+
+    // 添加点击页面空白处的事件处理程序
+    document.addEventListener('click', function(event) {
+        // 检查点击事件是否发生在目录容器之外，并且不是按钮本身
+        if (!tocContainer.contains(event.target) && event.target !== toggleButton) {
+            // 点击发生在目录容器之外，隐藏目录容器
+            tocContainer.style.display = 'none';
+        }
+    });
+</script>
+
+```
+
+除了中间 if 那块是原来主题根目录下的代码，顶部和尾部的代码是新添加的。
+
+此外，还需要在 `custom.scss` 文件中添加如下代码，不然移动端看不见按钮，就是将右栏改为 flex 布局。
+
+```scss
+.container {
+  .right-sidebar {
+    max-width: 20%;
+
+    // 移动端目录按钮的显示
+    display: flex;
+  }
+}
+```
+
+
+
+
+
+
+
 ### 主页右侧导航栏去除归档和分类
 
 `hugo.yaml` 配置
@@ -419,6 +594,51 @@ custom.scss 添加代码，根据自己需求修改 gap
 `{< animated-text text="哈哈" align="right" >}`
 
 {{< animated-text text="哈哈" align="right"  >}}
+
+`layouts/shortcodes/animated-text.html`代码：
+
+```html
+{{ $text := .Get "text" | default "L a p h e l" }}
+{{ $align := .Get "align" | default "center" }}
+{{ $fontSize := .Get "font-size" | default "90" }}
+
+<div class="" style="text-align: {{ $align }}; width: 100%; max-width: 100%;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="name" font-size="{{ $fontSize }}" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet">
+    {{ $textAnchor := "middle" }}
+    {{ $xPosition := "50%" }}
+    {{ if eq $align "left" }}
+      {{ $textAnchor = "start" }}
+      {{ $xPosition = "0%" }}
+    {{ else if eq $align "right" }}
+      {{ $textAnchor = "end" }}
+      {{ $xPosition = "100%" }}
+    {{ end }}
+
+    <text text-anchor="{{ $textAnchor }}" x="{{ $xPosition }}" y="66%" text-transform="uppercase" fill="none" stroke="#5d3d21" stroke-width="1px" stroke-dasharray="90 310">
+      {{ $text }}
+      <animate attributeName="stroke-dashoffset" begin="-1.5s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
+    </text>
+
+    <text text-anchor="{{ $textAnchor }}" x="{{ $xPosition }}" y="66%" text-transform="uppercase" fill="none" stroke="#212c27" stroke-width="1px" stroke-dasharray="90 310">
+      {{ $text }}
+      <animate attributeName="stroke-dashoffset" begin="-3s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
+    </text>
+
+    <text text-anchor="{{ $textAnchor }}" x="{{ $xPosition }}" y="66%" text-transform="uppercase" fill="none" stroke="#ebb10d" stroke-width="1px" stroke-dasharray="90 310">
+      {{ $text }}
+      <animate attributeName="stroke-dashoffset" begin="-4.5s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
+    </text>
+
+    <text text-anchor="{{ $textAnchor }}" x="{{ $xPosition }}" y="66%" text-transform="uppercase" fill="none" stroke="#9b59b6" stroke-width="1px" stroke-dasharray="90 310">
+      {{ $text }}
+      <animate attributeName="stroke-dashoffset" begin="-6s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
+    </text>
+  </svg>
+</div>
+
+```
+
+
 
 
 

@@ -166,6 +166,9 @@ code {
 .container {
   .right-sidebar {
     max-width: 20%;
+
+    // 移动端目录按钮的显示
+    display: flex;
   }
 }
 
@@ -347,5 +350,4 @@ code {
   filter: blur(20px);
   box-shadow: 0 0 40px 20px rgba(214, 236, 255, 0.7);
 }
-
 
