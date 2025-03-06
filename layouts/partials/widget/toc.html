@@ -91,7 +91,7 @@
     /* 电脑端样式：屏幕宽度大于 768px 时应用 */
     @media screen and (min-width: 769px) {
         #toc-container {
-            display: block; /* 电脑端默认显示目录容器 */
+            display: block !important; /* 电脑端默认显示目录容器 */
             position: static; /* 移除固定定位，让目录在正常文档流中 */
             border: none; /* 移除边框 */
             box-shadow: none; /* 移除阴影 */
@@ -119,17 +119,18 @@
     // 监听页面滚动事件
     window.addEventListener('scroll', function() {
         // 获取当前滚动位置
-        var scrollY = window.scrollY || window.pageYOffset;
+        // var scrollY = window.scrollY || window.pageYOffset;
         // 检查屏幕宽度，只在移动端执行按钮显示/隐藏逻辑
         if (window.innerWidth <= 768) {
             // 检查滚动位置是否超过阈值
-            if (scrollY >= scrollThreshold) {
-                // 显示按钮
-                toggleButton.style.display = 'block';
-            } else {
-                // 隐藏按钮
-                toggleButton.style.display = 'none';
-            }
+            // if (scrollY >= scrollThreshold) {
+            //     // 显示按钮
+            //     toggleButton.style.display = 'block';
+            // } else {
+            //     // 隐藏按钮
+            //     toggleButton.style.display = 'none';
+            // }
+            toggleButton.style.display = 'block';
         } else {
             // 电脑端始终隐藏按钮
             toggleButton.style.display = 'none';
