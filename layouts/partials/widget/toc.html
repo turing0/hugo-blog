@@ -80,6 +80,7 @@
 
         #toc-container {
             display: none; /* 移动端依旧隐藏目录容器，通过按钮显示 */
+            top: 2%;       /* 修改点： 使用 top 属性，设置目录容器距离屏幕顶部的距离为 2% */
         }
 
         #toggle-toc {
@@ -138,32 +139,30 @@
     });
 
     // 添加点击事件处理程序
-    // if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            // 切换目录的显示状态
-            if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
-                tocContainer.style.display = 'block';
-            } else {
+    toggleButton.addEventListener('click', function() {
+        // 切换目录的显示状态
+        if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
+            tocContainer.style.display = 'block';
+        } else {
+            tocContainer.style.display = 'none';
+        }
+    });
+
+    // 当鼠标悬浮在按钮上时显示目录
+    toggleButton.addEventListener('mouseover', function() {
+        // if (window.innerWidth <= 768) { // 仅在移动端悬浮显示
+            tocContainer.style.display = 'block';
+        // }
+    });
+
+    // 添加点击页面空白处的事件处理程序
+    document.addEventListener('click', function(event) {
+        // if (window.innerWidth <= 768) { // 仅在移动端点击空白处隐藏
+            // 检查点击事件是否发生在目录容器之外，并且不是按钮本身
+            if (!tocContainer.contains(event.target) && event.target !== toggleButton) {
+                // 点击发生在目录容器之外，隐藏目录容器
                 tocContainer.style.display = 'none';
             }
-        });
-
-        // 当鼠标悬浮在按钮上时显示目录
-        toggleButton.addEventListener('mouseover', function() {
-            // if (window.innerWidth <= 768) { // 仅在移动端悬浮显示
-                tocContainer.style.display = 'block';
-            // }
-        });
-
-        // 添加点击页面空白处的事件处理程序
-        document.addEventListener('click', function(event) {
-            // if (window.innerWidth <= 768) { // 仅在移动端点击空白处隐藏
-                // 检查点击事件是否发生在目录容器之外，并且不是按钮本身
-                if (!tocContainer.contains(event.target) && event.target !== toggleButton) {
-                    // 点击发生在目录容器之外，隐藏目录容器
-                    tocContainer.style.display = 'none';
-                }
-            // }
-        });
-    // }
+        // }
+    });
 </script>
