@@ -111,7 +111,7 @@
     }
 
     /* 判断isBlogPost为真且是非移动端时隐藏 */
-    @media (min-width: 769px) {
+    @media (min-width: 768px) {
         {{ if $isBlogPost }}
         .hidden-post {
             display: none;
@@ -119,8 +119,8 @@
         {{ end }}
     }
 
-    /* 在移动端（max-width: 768px）时，强制显示 */
-    @media (max-width: 768px) {
+    /* 在移动端（max-width: 767px）时，强制显示 */
+    @media (max-width: 767px) {
         .hidden-post {
             display: block !important;
         }
