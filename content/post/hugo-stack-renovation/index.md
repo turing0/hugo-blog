@@ -316,7 +316,7 @@ if 那块代码是原来主题根目录下此文件的代码，添加的代码�
 
 ### 代码块优化
 
-添加 macOS 样式以及边框优化
+添加 macOS 样式，固定高度，边框优化，代码块内字体调小
 
 `custom.scss` 添加代码：
 
@@ -345,6 +345,13 @@ if 那块代码是原来主题根目录下此文件的代码，添加的代码�
       background-color: transparent;
     }
   }
+}
+
+// 缩小代码块的字体大小
+code {
+  // border-radius: var(--tag-border-radius);
+  font-size: 14px;
+  // font-family: var(--code-font-family);
 }
 ```
 
@@ -687,6 +694,21 @@ Brazil where music is a top passion.”
 {{< /glow-quote>}}
 
 
+
+
+
+
+
+
+
+{{< accordion name="my-accordion" >}}
+  {{< details summary="Accordion 1" open="true" >}}
+    Lorem ipsum dolor sit amet.
+  {{< /details >}}
+  {{< details summary="Accordion 2" >}}
+    Lorem ipsum dolor sit amet.
+  {{< /details >}}
+{{< /accordion >}}
 
 
 

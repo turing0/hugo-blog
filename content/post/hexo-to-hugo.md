@@ -14,6 +14,22 @@ tags = [
 
 
 
+
+
+## 部署到 cloudflare pages
+
+我用的extended，HUGO_VERSION环境变量得在版本前面加extended_
+
+`HUGO_VERSION = extended_0.145.0`
+
+然后正常部署就行。
+
+
+
+
+
+
+
 ## 博客装修美化
 
 缝缝补补啦~
