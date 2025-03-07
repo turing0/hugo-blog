@@ -14,6 +14,13 @@
 {{ end }}
 
 <style>
+    .container {
+        .right-sidebar {
+            /* flex 布局显示移动端目录按钮 */
+            display: flex;
+        }
+    }
+
     /* 默认隐藏移动端目录元素，电脑端将覆盖显示 */
     .mobile-only {
         display: none !important;
@@ -34,16 +41,15 @@
         /* 可选：添加一些内边距 */
         border: 1px solid #96979a50;
         border-radius: var(--card-border-radius);
-        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         /* 可选：添加边框样式 */
-        z-index: 9998 !important;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         /* 可选：设置 z-index 以确保它显示在其他元素之上 */
+        z-index: 9998 !important;
         /* 设置最大高度为视口高度的 75% */
         max-height: 75vh;
         overflow-y: auto;
-        /* 添加垂直滚动条，以便在内容溢出时滚动 */
-        width: auto;
         /* 让容器的宽度自适应内容 */
+        width: auto;
         max-width: 290px;
     }
 
@@ -59,7 +65,6 @@
         background-color: #00640010;
         color: #34495e;
         /* 确保按钮在其他元素之上 */
-        /* 其他样式保持不变 */
         display: none; /* 初始时在电脑端也隐藏按钮，移动端通过媒体查询显示 */
         margin-bottom: -20px;
         cursor: pointer;
@@ -79,7 +84,6 @@
 
         #toc-container {
             display: none; /* 移动端依旧隐藏目录容器，通过按钮显示 */
-            /* top: 2%;       设置目录容器距离屏幕顶部的距离为 2% */
         }
 
         #toggle-toc {
@@ -114,32 +118,9 @@
 <script>
     var toggleButton = document.getElementById('toggle-toc');
     var tocContainer = document.getElementById('toc-container');
-    var scrollThreshold = 100; // 设置滚动显示的阈值
 
-    // 监听页面滚动事件
-    // window.addEventListener('scroll', function() {
-    //     // 获取当前滚动位置
-    //     // var scrollY = window.scrollY || window.pageYOffset;
-    //     // 检查屏幕宽度，只在移动端执行按钮显示/隐藏逻辑
-    //     if (window.innerWidth <= 768) {
-    //         // 检查滚动位置是否超过阈值
-    //         // if (scrollY >= scrollThreshold) {
-    //         //     // 显示按钮
-    //         //     toggleButton.style.display = 'block';
-    //         // } else {
-    //         //     // 隐藏按钮
-    //         //     toggleButton.style.display = 'none';
-    //         // }
-    //         toggleButton.style.display = 'block';
-    //     } else {
-    //         // 电脑端始终隐藏按钮
-    //         toggleButton.style.display = 'none';
-    //     }
-    // });
-
-    // 添加点击事件处理程序
+    // 添加点击事件：切换目录的显示状态
     toggleButton.addEventListener('click', function() {
-        // 切换目录的显示状态
         if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
             tocContainer.style.display = 'block';
         } else {

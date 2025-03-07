@@ -151,7 +151,7 @@ custom.scss 添加代码，根据自己需求修改 gap
 
 
 
-### 移动端目录按钮
+### 添加移动端目录
 
 电脑端保持原来的目录，移动端添加一个按钮可以打开目录。
 
@@ -174,6 +174,13 @@ custom.scss 添加代码，根据自己需求修改 gap
 {{ end }}
 
 <style>
+    .container {
+        .right-sidebar {
+            /* flex 布局显示移动端目录按钮 */
+            display: flex;
+        }
+    }
+
     /* 默认隐藏移动端目录元素，电脑端将覆盖显示 */
     .mobile-only {
         display: none !important;
@@ -194,16 +201,15 @@ custom.scss 添加代码，根据自己需求修改 gap
         /* 可选：添加一些内边距 */
         border: 1px solid #96979a50;
         border-radius: var(--card-border-radius);
-        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         /* 可选：添加边框样式 */
-        z-index: 9998 !important;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         /* 可选：设置 z-index 以确保它显示在其他元素之上 */
-        max-height: 80vh;
-        /* 设置最大高度为视口高度的 80% */
+        z-index: 9998 !important;
+        /* 设置最大高度为视口高度的 75% */
+        max-height: 75vh;
         overflow-y: auto;
-        /* 添加垂直滚动条，以便在内容溢出时滚动 */
-        width: auto;
         /* 让容器的宽度自适应内容 */
+        width: auto;
         max-width: 290px;
     }
 
@@ -219,12 +225,10 @@ custom.scss 添加代码，根据自己需求修改 gap
         background-color: #00640010;
         color: #34495e;
         /* 确保按钮在其他元素之上 */
-        /* 其他样式保持不变 */
         display: none; /* 初始时在电脑端也隐藏按钮，移动端通过媒体查询显示 */
         margin-bottom: -20px;
         cursor: pointer;
         font-size: 1.2rem;
-        /* 可选：改变鼠标光标以指示按钮是可点击的 */
     }
 
     .widget--toc #TableOfContents {
@@ -240,7 +244,6 @@ custom.scss 添加代码，根据自己需求修改 gap
 
         #toc-container {
             display: none; /* 移动端依旧隐藏目录容器，通过按钮显示 */
-            top: 2%;       /* 设置目录容器距离屏幕顶部的距离为 2% */
         }
 
         #toggle-toc {
@@ -275,32 +278,9 @@ custom.scss 添加代码，根据自己需求修改 gap
 <script>
     var toggleButton = document.getElementById('toggle-toc');
     var tocContainer = document.getElementById('toc-container');
-    var scrollThreshold = 100; // 设置滚动显示的阈值
 
-    // 监听页面滚动事件
-    // window.addEventListener('scroll', function() {
-    //     // 获取当前滚动位置
-    //     // var scrollY = window.scrollY || window.pageYOffset;
-    //     // 检查屏幕宽度，只在移动端执行按钮显示/隐藏逻辑
-    //     if (window.innerWidth <= 768) {
-    //         // 检查滚动位置是否超过阈值
-    //         // if (scrollY >= scrollThreshold) {
-    //         //     // 显示按钮
-    //         //     toggleButton.style.display = 'block';
-    //         // } else {
-    //         //     // 隐藏按钮
-    //         //     toggleButton.style.display = 'none';
-    //         // }
-    //         toggleButton.style.display = 'block';
-    //     } else {
-    //         // 电脑端始终隐藏按钮
-    //         toggleButton.style.display = 'none';
-    //     }
-    // });
-
-    // 添加点击事件处理程序
+    // 添加点击事件：切换目录的显示状态
     toggleButton.addEventListener('click', function() {
-        // 切换目录的显示状态
         if (tocContainer.style.display === 'none' || tocContainer.style.display === '') {
             tocContainer.style.display = 'block';
         } else {
@@ -330,20 +310,43 @@ custom.scss 添加代码，根据自己需求修改 gap
 
 if 那块代码是原来主题根目录下此文件的代码，添加的代码：添加移动端目录按钮，section 添加 id，添加 style 和 script 的代码。
 
-此外，还需要在 `custom.scss` 文件中添加如下代码，不然移动端看不见按钮，就是将右栏改为 flex 布局。
+代码参考自：[yelleis](https://yelleis.top/p/hugo-theme-stack-beautification-2/#%E7%9B%AE%E5%BD%95%E6%8C%89%E9%92%AE)，我做了些改动和优化，因为刚开始我直接复制代码进去在移动端是看不见的，最后反复查看才知道是flex的原因。
+
+
+
+### 代码块优化
+
+添加 macOS 样式以及边框优化
+
+`custom.scss` 添加代码：
 
 ```scss
-.container {
-  .right-sidebar {
-    max-width: 20%;
+.article-content {
+  // 为代码块顶部添加 macOS 样式
+  .highlight:before {
+    content: '';
+    display: block;
+    background: url(/code-header.svg);
+    height: 24px;
+    width: 100%;
+    background-size: 57px;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    background-position: -1px 2px;
+  }
 
-    // 移动端目录按钮的显示
-    display: flex;
+  // 代码块边框样式
+  .highlight {
+    max-width: 100% !important;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: var(--shadow-l1) !important;
+    ::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
   }
 }
 ```
-
-代码参考自：[yelleis](https://yelleis.top/p/hugo-theme-stack-beautification-2/#%E7%9B%AE%E5%BD%95%E6%8C%89%E9%92%AE)，我做了些改动和优化，因为刚开始我直接复制代码进去在移动端是看不见的，最后反复查看才知道是flex的原因，并且保持了电脑端原本的目录。
 
 
 
@@ -734,6 +737,15 @@ Brazil where music is a top passion.”
 {{< underline color="#ffdd00" content="谁在用琵琶弹奏一曲东风破" >}}
 <br/>
 {{< underline color="#ff2200" content="岁月在墙上剥落看见小时候" >}}
+
+
+
+
+
+{{< glow-quote>}}
+博客装修完了，也要写作起来呀，不然再好看的博客，也没人来看了不是
+
+{{< /glow-quote>}}
 
 ## REF
 

@@ -55,8 +55,8 @@ mark{
     }
 }
 
-// 为代码块顶部添加 macOS 样式
 .article-content {
+  // 为代码块顶部添加 macOS 样式
   .highlight:before {
     content: '';
     display: block;
@@ -67,6 +67,17 @@ mark{
     background-repeat: no-repeat;
     margin-bottom: 5px;
     background-position: -1px 2px;
+  }
+
+  // 代码块边框样式
+  .highlight {
+    max-width: 100% !important;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: var(--shadow-l1) !important;
+    ::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
   }
 }
 
@@ -166,9 +177,6 @@ code {
 .container {
   .right-sidebar {
     max-width: 20%;
-
-    // 移动端目录按钮的显示
-    display: flex;
   }
 }
 
