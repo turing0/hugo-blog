@@ -10,19 +10,19 @@ tags = [
 
 +++
 
-因为 hexo 速度较慢，且受限于npm版本，管理起来较为繁琐，所以换到hugo啦，也是开源的，而且社区良好！
+因为 hexo 速度较慢，且受限于 npm 版本，管理起来较为繁琐，所以换到 hugo 啦，也是开源的，而且社区良好！
 
 
 
 
 
-## 部署到 cloudflare pages
+## 部署到 CloudFlare Pages
 
-我用的extended，HUGO_VERSION环境变量得在版本前面加extended_
+我用的 extended 版本，部署到 cf pages上 时设置 hugo 的版本直接写的版本号，发现会报错：提示需要 extended 版本，那要怎么写呢？
 
-`HUGO_VERSION = extended_0.145.0`
+Google 搜索关键词：`cloudflare hugo extended`，在 [这个issue](https://github.com/cloudflare/cloudflare-docs/issues/6630) 看到了写法：
 
-然后正常部署就行。
+需要在版本号前面加 `extended_`，即 `HUGO_VERSION = extended_0.145.0`，然后正常部署就行啦。
 
 
 

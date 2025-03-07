@@ -1,0 +1,11 @@
+{{ $id := printf "collapsible-%d" (now.UnixNano) }}
+
+<details class="collapsible" id="{{ $id }}">
+  <summary class="collapsible-summary">
+    <span class="toggle-indicator"></span>
+    <span class="summary-text">{{ .Get "summary" }}</span>
+  </summary>
+  <div class="collapsible-content">
+    {{ .Inner }}
+  </div>
+</details>
