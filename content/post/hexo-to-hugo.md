@@ -26,6 +26,34 @@ Google 搜索关键词：`cloudflare hugo extended`，在 [这个issue](https://
 
 
 
+## Umami 统计
+
+Umami 统计优雅好看。
+
+> 你知道吗？Umami 来自日语，意为 pleasant savory taste，即令人愉悦的鲜味。🍣
+
+在 [Umami](https://umami.is/) 上注册并添加网站可以得到 script 代码。
+
+本站使用的是 [Hugo Stack](https://github.com/CaiJimmy/hugo-theme-stack) 主题，此主题未自带 umami 配置，如果有的主题有带配置的取配置文件添加即可，未带配置的则需要手动添加代码。
+
+添加文件 `/layouts/partials/head/custom.html`：
+
+```html
+<head>
+  <script 
+    defer 
+    src="https://cloud.umami.is/script.js" 
+    data-website-id="xxx"
+    data-domains="blog.laphel.com"
+  ></script>
+</head>
+
+```
+
+参数请替换为自己的，data-domains 用于指定统计特定域名下的，我添加这个是为了不统计 localhost 的数据。
+
+更多配置请参考 [官方文档](https://umami.is/docs/tracker-configuration)。
+
 
 
 
@@ -53,3 +81,5 @@ https://tomo.dev/posts/create-hugo-theme-from-scratch/part-two/
 [Redirects · Cloudflare Pages docs](https://developers.cloudflare.com/pages/configuration/redirects/)
 
 [将博客迁移到了 Cloudflare Pages](https://qcrao.com/post/migrate-blog-to-cloudflare-pages/)
+
+[使用 Umami API 显示文章阅读量](https://chiehmo.com/blog/show-pageviews-by-umami/	)

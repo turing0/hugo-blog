@@ -60,6 +60,13 @@
     {{- end -}}
 
     <ol class="menu" id="main-menu">
+        {{ if $isBlogPost }}
+            <li class="" id="back-button"> 
+                <a href="javascript:history.back();" title="Go back">
+                    {{ partial "helper/icon" "arrow-left" }}
+                </a>
+            </li>
+        {{ end }}
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
         {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
@@ -109,7 +116,12 @@
     .hidden-post {
         display: block;
     }
-
+    /* #back-menu {
+        list-style: none;
+    } */
+    /* #back-button {
+        margin-top: -10px;
+    } */
     /* 判断isBlogPost为真且是非移动端时隐藏 */
     @media (min-width: 768px) {
         {{ if $isBlogPost }}
@@ -123,6 +135,9 @@
     @media (max-width: 767px) {
         .hidden-post {
             display: block !important;
+        }
+        #back-button {
+            display: none;
         }
     }
 </style>
