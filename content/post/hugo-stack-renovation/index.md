@@ -129,21 +129,45 @@ custom.scss 添加代码
 {{ end }}
 ```
 
-### 左侧导航栏菜单间距
+### 左侧导航栏主菜单优化
 
-custom.scss 添加代码，根据自己需求修改 gap
+左侧导航栏主菜单间距，移动端弹出菜单优化，图标与链接的间距优化。
+
+`custom.scss` 添加代码，根据自己需求修改 gap
 
 ```scss
-// 左侧导航栏菜单间距
 #main-menu {
+  // 左侧导航栏主菜单上下间距
+  margin: auto;
   &, .menu-bottom-section ol {
       flex-direction: column;
       gap: 20px;
 
       @include respond(xl) {
-          gap: 20px;
+        gap: 20px;
       }
   }
+
+  // 移动端弹出菜单优化
+  &.show {
+    display: flex;
+    position: absolute;
+    top: 20%;
+    right: 1%;
+    z-index: 10;
+    width: auto;
+    max-width: 250px;
+    border-radius: var(--card-border-radius);
+  }
+}
+
+// 左侧导航栏主菜单内图标与链接的间距
+:root {
+  --menu-icon-separation: 20px;
+
+  // section 间距
+  --section-separation: 30px;
+  --widget-separation: var(--section-separation);
 }
 ```
 
@@ -1271,6 +1295,10 @@ Here goes something you want to be mostly hidden by default, but with ability to
 `{{</* mark text="好喜欢蓝色！" */>}}`
 
 {{< mark text="好喜欢蓝色！" >}}
+
+
+
+
 
 <span class="blur">一些手动打码效果！<br>但总之换行的话就加个空标签。</span>
 
