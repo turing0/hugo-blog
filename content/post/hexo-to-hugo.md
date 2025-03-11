@@ -6,7 +6,9 @@ description = "博客搬到 Hugo 啦"
 tags = [
     "shortcodes",
     "hugo",
+    "hexo"
 ]
+
 
 +++
 

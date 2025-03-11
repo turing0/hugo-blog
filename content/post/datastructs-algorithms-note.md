@@ -1,8 +1,8 @@
 ---
 title: 数据结构与算法 学习笔记
-slug: datastructs-algorithms-note
+slug: data-structures-algorithms-note
 date: 2020-03-25 23:51:34
-tags: [算法,数据结构,Datastruct,Algorithm]
+tags: ["data structures"]
 categories: 
   - Algorithms
 ---

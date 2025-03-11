@@ -1,21 +1,22 @@
 ---
-title: Firefox和Chrome 自用扩展插件
+title: Firefox 和 Chrome 自用扩展插件
 slug: firefox-chrome-extensions
 date: 2020-04-16 16:57:04
 tags: 
- - 插件
-categories: 实用
+ - firefox
+categories: 
+ - Productivity
 ---
 
-一些自用的扩展,这些都可以在火狐或chrome里面搜索安装
+一些自用的扩展，这些都可以在火狐或 chrome 里面搜索安装。
 
 # Firefox
 
-不一定是火狐特有的，chrome也有
+不一定是火狐特有的，chrome 也有
 
 <!--more-->
 
-**捕捉网页截图**-捕捉网页截图，编辑并将它们保存为PDF，JPEG，GIF，PNG或BMP；上传，打印，在Photoshop中打开，复制到剪贴板或电子邮件
+**捕捉网页截图**-捕捉网页截图，编辑并将它们保存为 PDF，JPEG，GIF，PNG 或 BMP；上传，打印，在 Photoshop 中打开，复制到剪贴板或电子邮件
 
 https://getfireshot.com
 
@@ -47,4 +48,4 @@ https://github.com/FelisCatus/SwitchyOmega
 
 **设置 Firefox 新标签页打开方式为“在当前标签页旁边打开新的标签页”**
 
-在about:config中修改browser.tabs.insertAfterCurrent为true后，可以实现在在当前标签页右边打开新标签页的功能。不过，如果有时又需要在在标签页队列的最右边打开新标签页的话，每次都修改about:config又不方便，因此可安装open tabs next to current。需要open tabs next to current时启用，不用时禁用，方便。
+在 `about:config` 中修改 browser.tabs.insertAfterCurrent 为 true 后，可以实现在在当前标签页右边打开新标签页的功能。不过，如果有时又需要在在标签页队列的最右边打开新标签页的话，每次都修改 `about:config` 又不方便，因此可安装 open tabs next to current。需要 open tabs next to current 时启用，不用时禁用，方便。

@@ -2,7 +2,7 @@
 
 title: Git Study
 date: 2021-03-01 14:35:08
-tags: [Git]
+tags: [git]
 categories: 
 
 ---

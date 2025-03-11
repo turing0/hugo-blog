@@ -3,7 +3,7 @@
 title: Git 教程
 slug: git-tutorial
 date: 2021-03-25 23:00:08
-tags: [Git]
+tags: [git]
 categories: 
 
 ---
