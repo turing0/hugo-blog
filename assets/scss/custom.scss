@@ -4,6 +4,12 @@
   background: #6a4c9c;
 }
 
+/* 全局滚动条样式 */
+* {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent; /* 半透明黑色滑块，透明轨道 */
+}
+
 // 文字颜色渐变
 .colorfulfont {
   background: linear-gradient(to right, rgb(25, 221, 238), #ed4588); //第一个颜色代码是渐变起始色，第二个颜色代码是渐变结束色；
@@ -409,11 +415,9 @@ code {
   transition: transform 0.3s ease;
   color: inherit; /* Inherit color from summary text */
 }
-
 .collapsible[open] > .collapsible-summary::before {
   transform: rotate(90deg);
 }
-
 .summary-text {
   flex-grow: 1;
 }

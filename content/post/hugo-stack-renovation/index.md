@@ -12,7 +12,7 @@ date: 2025-03-02 08:13:09
 
 ### 网站头像及名字居中
 
-custom.scss 添加代码
+`custom.scss` 添加代码
 
 顺便把描述的字体改小了一点
 
@@ -40,6 +40,24 @@ custom.scss 添加代码
   margin: auto;
 }
 ```
+
+
+
+### 滚动条优化
+
+`custom.scss` 添加代码
+
+```scss
+/* 全局滚动条样式 */
+* {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent; /* 半透明黑色滑块，透明轨道 */
+}
+```
+
+
+
+
 
 ### 归档页面
 
