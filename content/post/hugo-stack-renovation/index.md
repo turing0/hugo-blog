@@ -558,6 +558,13 @@ code {
     {{- end -}}
 
     <ol class="menu" id="main-menu">
+        {{ if $isBlogPost }}
+            <li class="" id="back-button"> 
+                <a href="javascript:history.back();" title="Go back">
+                    {{ partial "helper/icon" "arrow-left" }}
+                </a>
+            </li>
+        {{ end }}
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
         {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
@@ -622,12 +629,21 @@ code {
         .hidden-post {
             display: block !important;
         }
+        #back-button {
+            display: none;
+        }
     }
 </style>
 
 ```
 
 如果你在用的编辑器报错，不用管他，这是因为 html 没有 hugo 的模板语法。
+
+添加了一个返回键。
+
+需要添加文件 `assets/icons/arrow-left.svg`
+
+svg 文件在 [tabler](https://tabler.io/icons) 下载。为什么用 tabler，不用其他的呢？因为 stack 主题的图标就用的这个。
 
 ### 添加文章社交链接分享
 
