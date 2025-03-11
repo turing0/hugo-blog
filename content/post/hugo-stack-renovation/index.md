@@ -1217,6 +1217,67 @@ params:
 
 这样就可以了。
 
+
+
+### 修改标签页页面
+
+`/tags` 页面不好看，我想要改成那种标签云样式的。
+
+添加文件 `layouts/tags/terms.html`
+
+```html
+{{ define "main" }}
+  <h1 class="tags-title">Tags</h1>
+  <p class="tags-subtitle">{{ len .Data.Terms }} Tags In Total</p>
+
+  <div class="tag-cloud">
+    {{ range $key, $value := .Data.Terms.Alphabetical }}
+      <a href="{{ .Page.RelPermalink }}" class="tag" style="font-size: {{ add 12 (mul .Count 2) }}px;">
+        {{ .Page.Title }} ({{ .Count }})
+      </a>
+    {{ end }}
+  </div>
+{{ end }}
+
+```
+
+`custom.scss` 添加样式：
+
+```scss
+// Tags 页面样式
+.tags-title {
+  text-align: center;
+  font-size: 2em;
+}
+.tags-subtitle {
+  text-align: center;
+  margin-top: -30px;
+}
+.tag-cloud {
+  text-align: center;
+}
+.tag {
+  display: inline-block;
+  margin: 5px;
+  text-decoration: none;
+  padding: 3px 8px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.tag:hover {
+  color: #3498db;
+  transform: scale(1.1); /* 悬停时稍微放大 */
+}
+```
+
+效果见  [Tags 页面](https://blog.laphel.com/tags)。
+
+
+
+
+
+
+
 ---
 
 ## Shortcoeds

@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <h1 class="tags-title">Tags</h1>
+  <p class="tags-subtitle">{{ len .Data.Terms }} Tags In Total</p>
+
+  <div class="tag-cloud">
+    {{ range $key, $value := .Data.Terms.Alphabetical }}
+      <a href="{{ .Page.RelPermalink }}" class="tag" style="font-size: {{ add 12 (mul .Count 2) }}px;">
+        {{ .Page.Title }} ({{ .Count }})
+      </a>
+    {{ end }}
+  </div>
+{{ end }}
