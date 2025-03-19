@@ -4,7 +4,7 @@ slug = 'Apple Developer Register'
 date = '2025-03-19T15:05:01+08:00'
 draft = false
 categories = [""]
-tags = [""]
+tags = ["apple"]
 image = "https://developer.apple.com/news/images/og/apple-developer-og-twitter.png"
 
 +++
@@ -27,11 +27,15 @@ image = "https://developer.apple.com/news/images/og/apple-developer-og-twitter.p
 
 
 
+同意。
+
 ![1](1.png)
 
 
 
-然后
+
+
+填写个人信息
 
 ![2](2.png)
 
@@ -45,7 +49,7 @@ image = "https://developer.apple.com/news/images/og/apple-developer-og-twitter.p
 
 
 
-填写完资料后就会看到如图所示：
+填写完资料后提交就会看到如图所示：
 
 
 
