@@ -144,13 +144,13 @@ server {
 }
 
 server {
-    if ($host = img.gawhale.com) {
+    if ($host = img.example.com) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
 
     listen 80;
-    server_name img.gawhale.com;
+    server_name img.example.com;
     return 404; # managed by Certbot
 
 
