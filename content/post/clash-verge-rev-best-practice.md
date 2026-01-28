@@ -581,6 +581,24 @@ function main(config) {
 ```js
 // Define main function (script entry)
 
+// 国内DNS服务器
+const domesticNameservers = [
+  "https://223.5.5.5/dns-query", // 阿里DoH
+  "https://doh.pub/dns-query", // 腾讯DoH，因腾讯云即将关闭免费版IP访问，故用域名
+  "https://doh.360.cn/dns-query" // 360安全DNS
+];
+// 国外DNS服务器
+const foreignNameservers = [
+  "https://1.1.1.1/dns-query", // Cloudflare(主)
+  "https://1.0.0.1/dns-query", // Cloudflare(备)
+  "https://77.88.8.8/dns-query", //YandexDNS
+  "https://8.8.4.4/dns-query#ecs=1.1.1.1/24&ecs-override=true", // GoogleDNS
+  "https://208.67.222.222/dns-query#ecs=1.1.1.1/24&ecs-override=true", // OpenDNS
+  "https://194.242.2.2/dns-query", // Mullvad(主)
+  "https://194.242.2.3/dns-query", // Mullvad(备)
+  "https://9.9.9.9/dns-query", //Quad9DNS
+];
+
 function main(config, profileName) {
   const isObject = (value) => {
     return value !== null && typeof value === 'object'
@@ -596,37 +614,36 @@ function main(config, profileName) {
     return { ...existingConfig, ...newConfig }
   }
 
-  const cnDnsList = [
-    'https://223.5.5.5/dns-query',
-    'https://223.6.6.6/dns-query',
-  ]
-  const trustDnsList = [
-    'quic://dns.cooluc.com',
-    'https://doh.apad.pro/dns-query',
-    'https://1.0.0.1/dns-query',
-  ]
-  const notionDns = 'tls://dns.jerryw.cn'
-  const notionUrls = [
-    'http-inputs-notion.splunkcloud.com',
-    '+.notion-static.com',
-    '+.notion.com',
-    '+.notion.new',
-    '+.notion.site',
-    '+.notion.so',
-  ]
-  const combinedUrls = notionUrls.join(',');
-  const dnsOptions = {
+  const dnsConfig = {
     'enable': true,
+    "listen": "0.0.0.0:1053",
+    // "ipv6": true,
     'prefer-h3': true, // 如果DNS服务器支持DoH3会优先使用h3
-    'default-nameserver': cnDnsList, // 用于解析其他DNS服务器、和节点的域名, 必须为IP, 可为加密DNS。注意这个只用来解析节点和其他的dns，其他网络请求不归他管
-    'nameserver': trustDnsList, // 其他网络请求都归他管
-
-    // 这个用于覆盖上面的 nameserver
+    "respect-rules": true,
+    "use-system-hosts": false,
+    "cache-algorithm": "arc",
+    "enhanced-mode": "fake-ip",
+    "fake-ip-range": "198.18.0.1/16",
+    "fake-ip-filter": [
+      // 本地主机/设备
+      "+.lan",
+      "+.local",
+      // Windows网络出现小地球图标
+      "+.msftconnecttest.com",
+      "+.msftncsi.com",
+      // QQ快速登录检测失败
+      "localhost.ptlogin2.qq.com",
+      "localhost.sec.qq.com",
+      // 微信快速登录检测失败
+      "localhost.work.weixin.qq.com"
+    ],
+    'default-nameserver': ["223.5.5.5", "1.2.4.8"],
+    "nameserver": [...foreignNameservers],
+    "proxy-server-nameserver": [...domesticNameservers],
+    "direct-nameserver": [...domesticNameservers],
+    "direct-nameserver-follow-policy": false,
     'nameserver-policy': {
-      [combinedUrls]: notionDns,
-      'geosite:geolocation-!cn': trustDnsList,
-      // 如果你有一些内网使用的DNS，应该定义在这里，多个域名用英文逗号分割
-      // '+.公司域名.com, www.4399.com, +.baidu.com': '10.0.0.1'
+      "geosite:cn": domesticNameservers
     },
   }
 
@@ -667,7 +684,9 @@ function main(config, profileName) {
     'geodata-mode': true,
     'geox-url': accelURLs,
   }
-  config.dns = mergeConfig(config.dns, dnsOptions)
+  
+  config["dns"] = dnsConfig;
+
   return { ...config, ...otherOptions }
 }
 
