@@ -7,21 +7,15 @@ tags = ["nginx"]
 
 +++
 
-
-
 比如有个 fastapi 服务在 8001 端口，现在想要实现通过域名访问，怎么做呢？
 
 这就需要 Nginx 反代了。
 
 以下我使用 Ubuntu 服务器进行操作。
 
-
-
 ## Nginx 反代配置
 
 首先需要将域名解析到服务器的 IP 地址，然后继续。
-
-
 
 编辑 Nginx 配置文件：
 
@@ -46,8 +40,6 @@ server {
 
  `proxy_pass` 指向了 FastAPI 服务所在的地址 `127.0.0.1:8001`，只要访问这个域名的所有请求都会被转发到 FastAPI 服务。
 
-
-
 检查 Nginx 配置：`sudo nginx -t`
 
 如果配置正确。就会看到输出：
@@ -57,27 +49,19 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-
-
 配置没问题，重新加载 Nginx 让他生效：
 
 ```bash
 sudo systemctl reload nginx
 ```
 
-
-
 现在，通过上面的域名访问，就可以啦！
 
 下一步，添加 ssl。
 
-
-
 ## 添加 SSL
 
 这里我们用 Let's Encrypt 免费的 SSL 证书来实现 HTTPS 加密。
-
-
 
 ### 安装 Certbot
 
@@ -86,11 +70,9 @@ Certbot 是一个由 Let's Encrypt 提供的自动化工具。
 安装 Certbot：
 
 ```bash
-sudo apt update
-sudo apt install certbot python3-certbot-nginx
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
-
-
 
 ### 申请 SSL 证书
 
@@ -105,15 +87,11 @@ sudo certbot --nginx -d example.com
 - `--nginx` 选项表示 Certbot 会自动修改你的 Nginx 配置以启用 SSL。
 - `-d example.com` 是刚才配置的域名。
 
-
-
 如果有多个域名或子域名，也可以这样指定：
 
 ```bash
 sudo certbot --nginx -d example.com -d www.example.com
 ```
-
-
 
 来看看 certbot 添加了什么，执行：
 
@@ -159,10 +137,6 @@ server {
 
 certbot 为我们添加了 443 的监听以及 https 跳转。
 
-
-
-
-
 ### 确认自动配置
 
 Certbot 会在成功申请证书后，自动为 Nginx 配置 SSL。可以通过以下命令检查 Nginx 配置文件是否正确：
@@ -179,33 +153,36 @@ sudo systemctl reload nginx
 
 到这里就可以用我们的域名通过 https 访问啦！
 
-
-
 ### 自动续期
 
-Let's Encrypt 的证书有效期是 90 天，因此需要定期续期。可以使用 Certbot 自动续期，运行以下命令测试续期功能：
+Certbot 在安装时会自动创建一个 **systemd timer**（定时器）。这个定时器每天会运行两次，检查你的证书是否在 30 天内过期。如果是，它会自动帮你续期。
+
+
+
+**检查定时器是否在运行：** 运行以下命令，你应该能在列表中看到 `snap.certbot.renew`：
+
+```bash
+systemctl list-timers | grep certbot
+```
+
+
+
+
+
+**模拟续期测试 (Dry Run)：** 为了确保你的 Nginx 配置和网络环境允许自动续期，运行一次模拟测试：
 
 ```bash
 sudo certbot renew --dry-run
 ```
 
-如果一切正常，你可以设置一个定时任务（cron job）来自动续期证书。
+**提示：** 如果最后显示 "Congratulations, all simulated renewals succeeded"，那就说明自动续期完全没问题。
 
-打开 cron 编辑器：
 
-```bash
-sudo crontab -e
-```
 
-添加以下行，每天检查并自动续期证书：
+**手动触发（仅在必要时）：** 如果你想现在就手动尝试续期所有证书，只需运行：
 
 ```bash
-0 3 * * * certbot renew --quiet && systemctl reload nginx
+sudo certbot renew
 ```
-
-这个任务会每天凌晨 3 点检查证书是否需要续期，并在成功续期后重新加载 Nginx。
-
-
 
 Easy ~
-
